@@ -15,21 +15,7 @@
                         <li class="breadcrumb-item active" aria-current="page">Userlist</li>
                     </ol>
                 </div>
-                <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button"
-                            class="btn btn-white btn-icon-text my-2 me-2 d-inline-flex align-items-center">
-                            <i class="fe fe-download me-2 fs-14"></i> Import
-                        </button>
-                        <button type="button"
-                            class="btn btn-white btn-icon-text my-2 me-2 d-inline-flex align-items-center">
-                            <i class="fe fe-filter me-2 fs-14"></i> Filter
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text d-inline-flex align-items-center">
-                            <i class="fe fe-download-cloud me-2 fs-14"></i> Download Report
-                        </button>
-                    </div>
-                </div>
+
             </div>
 
             <!-- Page Header Close -->
@@ -46,6 +32,7 @@
                                         <a href="javascript:void(0);" class="option-dots" data-bs-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false"><i
                                                 class="fe fe-more-horizontal"></i></a>
+                                        <a href="" class="btn btn-primary">Add User</a>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item" href="javascript:void(0);">Today</a>
                                             <a class="dropdown-item" href="javascript:void(0);">Last Week</a>
@@ -55,8 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="fs-12 text-gray-5 mt-0 mb-2">Example of Spruha Simple Table. <a
-                                    href="javascript:void(0);" class="text-primary">Learn more</a></p>
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive userlist-table">
@@ -405,6 +391,7 @@
                                     </tbody>
                                 </table>
                             </div>
+
                             <nav aria-label="...">
                                 <ul class="pagination mt-4 mb-0 float-end">
                                     <li class="page-item disabled">
@@ -419,6 +406,7 @@
                                     </li>
                                 </ul>
                             </nav>
+
                         </div>
                     </div>
                 </div><!-- COL END -->
