@@ -17,9 +17,8 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
         if ($request->ajax()) {
-            $query = User::with('creator','roles');
+            $query = User::with('creator', 'roles');
             return Datatables::eloquent($query)->make(true);
         }
         return view('user.index');
@@ -57,7 +56,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::all();
+        // $roles = Role::all();
         return view('user.edit', compact('user', 'roles'));
     }
     /**
