@@ -1,90 +1,103 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-12">
-                        <h1>User</h1>
-                    </div>
-                    <div class="col-sm-12">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('user.index') }}">User</a></li>
-                            <li class="breadcrumb-item active">Create user</li>
-                        </ol>
-                    </div>
+    <div class="main-content app-content">
+        <div class="container-fluid">
+
+            <div class="d-md-flex d-block align-items-center justify-content-between page-header-breadcrumb">
+                <div>
+                    <h2 class="main-content-title fs-24 mb-1">User</h2>
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Advanced UI</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">User</li>
+                    </ol>
                 </div>
-            </div><!-- /.container-fluid -->
-        </section>
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Create user</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="card-body">
-                                <form method="POST" action="{{ route('user.store') }}">
-                                   @csrf
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Name<span class="text-danger">*</label>
-                                        <input type="name" class="form-control @error('name') is-invalid @enderror"
-                                            id="name" placeholder="Enter email" name="name"  value="{{ old('name') }}">
-                                        @error('name')
-                                            <span class="error invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email<span class="text-danger">* </label>
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
-                                            id="email" placeholder="Enter email" name="email" value="{{ old('email') }}">
-                                        @error('email')
-                                            <span class="error invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Password<span class="text-danger">* </label>
-                                        <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                            id="password" placeholder="Enter Passsword" name="password" value="{{ old('password') }}">
-                                        @error('password')
-                                            <span class="error invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Confirm Password<span class="text-danger">*</span></label>
-                                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                            id="password_confirmation" placeholder="Confirm Password" name="password_confirmation">
-                                        @error('password_confirmation')
-                                            <span class="error invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+            </div>
+            <div class="row row-sm">
+                <div class="col-xl-6">
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Create</button>
-                                    </div>
-                                </form>
+                    <div class="card custom-card">
+                        <div class="card-header justify-content-between">
+                            <div class="card-title">
+                                User Create
                             </div>
+
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('user.store') }}">
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Enter name</label>
+                                    <input type="name" class="form-control @error('name') is-invalid @enderror"
+                                        id="name" placeholder="Enter name" name="name" value="{{ old('name') }}">
+                                    @error('name')
+                                        <span class="error invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="form-password" class="form-label fs-14 text-dark">Enter
+                                        Email</label>
+                                    <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                        id="email" placeholder="Enter email" name="email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <span class="error invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="form-password" class="form-label fs-14 text-dark">Enter
+                                        Password</label>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                        id="password" placeholder="Enter Passsword" name="password"
+                                        value="{{ old('password') }}">
+                                    @error('password')
+                                        <span class="error invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="form-password" class="form-label fs-14 text-dark">Confirm Password</label>
+                                    <input type="password"
+                                        class="form-control @error('password_confirmation') is-invalid @enderror"
+                                        id="password_confirmation" placeholder="Confirm Password"
+                                        name="password_confirmation">
+                                    @error('password_confirmation')
+                                        <span class="error invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <button class="btn btn-primary" type="submit">Create</button>
+                            </form>
+                        </div>
+                        <div class="card-footer d-none border-top-0">
+                            <!-- Prism Code -->
+                            <pre class="language-html"><code class="language-html">&lt;div class="mb-3"&gt;
+&lt;label for="form-text" class="form-label fs-14 text-dark"&gt;Enter name&lt;/label&gt;
+&lt;input type="text" class="form-control" id="form-text" placeholder=""&gt;
+&lt;/div&gt;
+&lt;div class="mb-3"&gt;
+&lt;label for="form-password" class="form-label fs-14 text-dark"&gt;Enter
+Password&lt;/label&gt;
+&lt;input type="password" class="form-control" id="form-password" placeholder=""&gt;
+&lt;/div&gt;
+&lt;div class="form-check mb-3"&gt;
+&lt;input class="form-check-input" type="checkbox" value="" id="invalidCheck"
+required=""&gt;
+&lt;label class="form-check-label" for="invalidCheck"&gt;
+Accept Policy
+&lt;/label&gt;
+&lt;/div&gt;
+&lt;button class="btn btn-primary" type="submit"&gt;Submit&lt;/button&gt;</code></pre>
+                            <!-- Prism Code -->
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 @endsection
-
-
-

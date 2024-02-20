@@ -32,7 +32,7 @@
                                         <a href="javascript:void(0);" class="option-dots" data-bs-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false"><i
                                                 class="fe fe-more-horizontal"></i></a>
-                                        <a href="" class="btn btn-primary">Add User</a>
+                                        <a href="{{ route('user.create') }}" class="btn btn-primary">Add User</a>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item" href="javascript:void(0);">Today</a>
                                             <a class="dropdown-item" href="javascript:void(0);">Last Week</a>
