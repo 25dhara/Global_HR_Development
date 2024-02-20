@@ -17,11 +17,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $query = User::with('creator', 'roles');
-            return Datatables::eloquent($query)->make(true);
-        }
-        return view('user.index');
+        echo "ggg";
+        die;
+        // if ($request->ajax()) {
+        //     $query = User::with('creator', 'roles');
+        //     return Datatables::eloquent($query)->make(true);
+        // }
+        // return view('user.index');
     }
     /**
      * Show the form for creating a new resource.
@@ -41,8 +43,7 @@ class UserController extends Controller
             'password' => $request->password,
             'created_by' => 1
         ]);
-        return redirect()->route('user.index')
-            ->with('success', 'User created successfully.');
+        return redirect()->route('user.index');
     }
     /**
      * Display the specified resource.

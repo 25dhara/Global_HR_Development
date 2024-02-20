@@ -26,49 +26,52 @@
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('user.store') }}">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="form-text" class="form-label fs-14 text-dark">Enter name</label>
+                                    <label for="form-text" class="form-label fs-14 text-dark">Name<span
+                                            class="text-danger">*</span></label>
                                     <input type="name" class="form-control @error('name') is-invalid @enderror"
                                         id="name" placeholder="Enter name" name="name" value="{{ old('name') }}">
                                     @error('name')
-                                        <span class="error invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="form-password" class="form-label fs-14 text-dark">Enter
-                                        Email</label>
+                                    <label for="form-password" class="form-label fs-14 text-dark">
+                                        Email<span class="text-danger">*</span></label>
                                     <input type="text" class="form-control @error('email') is-invalid @enderror"
                                         id="email" placeholder="Enter email" name="email" value="{{ old('email') }}">
                                     @error('email')
-                                        <span class="error invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="form-password" class="form-label fs-14 text-dark">Enter
-                                        Password</label>
+                                    <label for="form-password" class="form-label fs-14 text-dark">
+                                        Password<span class="text-danger">*</span></label>
                                     <input type="password" class="form-control @error('password') is-invalid @enderror"
                                         id="password" placeholder="Enter Passsword" name="password"
                                         value="{{ old('password') }}">
                                     @error('password')
-                                        <span class="error invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="form-password" class="form-label fs-14 text-dark">Confirm Password</label>
+                                    <label for="form-password" class="form-label fs-14 text-dark">Confirm Password<span
+                                            class="text-danger">*</span></label>
                                     <input type="password"
                                         class="form-control @error('password_confirmation') is-invalid @enderror"
                                         id="password_confirmation" placeholder="Confirm Password"
                                         name="password_confirmation">
                                     @error('password_confirmation')
-                                        <span class="error invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
                                 </div>
                                 <button class="btn btn-primary" type="submit">Create</button>

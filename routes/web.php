@@ -14,14 +14,14 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
-Route::get('/index', function () {
-    return view('layouts.index');
-});
-Route::get('/users', function () {
-    return view('user.index');
-});
+// Route::get('/', function () {
+//     return view('layouts.app');
+// });
+// Route::get('/index', function () {
+//     return view('layouts.index');
+// });
+// Route::get('/users', function () {
+//     return view('user.index');
+// });
 
 Route::resource('user',            UserController::class);
