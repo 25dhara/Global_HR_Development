@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('layouts.index');
 });
+Route::get('/users', function () {
+    return view('user.index');
+});
