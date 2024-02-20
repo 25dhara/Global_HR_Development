@@ -22,3 +22,5 @@ Route::get('/index', function () {
 Route::get('/users', function () {
     return view('user.index');
 });
+
+Route::resource('user',            UserController::class);
