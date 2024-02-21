@@ -48,10 +48,10 @@
                                 </div>
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
-                                        name="is_active">
+                                        {{ $user->is_active == 1 ? 'checked' : '' }} name="is_active">
                                     <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
-                                <!-- You can add more fields here for editing -->
+
                                 <button class="btn btn-primary" type="submit">Update</button>
                             </form>
                         </div>

@@ -66,6 +66,18 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    // public function update(UpdateUserRequest $request, User $user)
+    // {
+    //     $is_active = $request->is_active == "on" ? 1 : 0;
+    //     $user->update([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'is_active' => $is_active
+    //     ]);
+    //     print_r($is_active);
+    //     die;
+    //     return redirect()->route('user.index')->with('success', 'User updated successfully');
+    // }
     public function update(UpdateUserRequest $request, User $user)
     {
         $is_active = $request->is_active == "on" ? 1 : 0;
@@ -74,8 +86,6 @@ class UserController extends Controller
             'email' => $request->email,
             'is_active' => $is_active
         ]);
-        // print_r($user);
-        // die;
         return redirect()->route('user.index')->with('success', 'User updated successfully');
     }
 
