@@ -57,10 +57,10 @@
                             <a href="{{ route('user.index') }}" class="side-menu__item">User</a>
                         </li>
                         <li class="slide">
-                            <a href="ecommerce-products.html" class="side-menu__item">Role</a>
+                            <a href="{{ route('role.index') }}" class="side-menu__item">Role</a>
                         </li>
                         <li class="slide">
-                            <a href="ecommerce-product-details.html" class="side-menu__item">Permissions
+                            <a href="{{ route('permission.index') }}" class="side-menu__item">Permission
                             </a>
                         </li>
                     </ul>
@@ -70,6 +70,10 @@
                 </li>
                 <li class="slide">
                     <a href="{{ route('department.index') }}" class="side-menu__item">Department
+                    </a>
+                </li>
+                <li class="slide">
+                    <a href="{{ route('module.index') }}" class="side-menu__item">Module
                     </a>
                 </li>
                 </li>
