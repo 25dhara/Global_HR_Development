@@ -8,7 +8,7 @@
                 <div>
                     <h2 class="main-content-title fs-24 mb-1">Edit User</h2>
                     <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Advanced UI</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">User Management</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit User</li>
                     </ol>
                 </div>
@@ -46,6 +46,41 @@
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Branch <span
+                                            class="text-danger">*</span></label>
+                                    <select
+                                        class="form-select @error('name') is-invalid @enderror"aria-label="select example"
+                                        name="branch">
+                                        <option value="">Branch</option>
+                                        {{-- @foreach ($branches as $branch)
+                                            <option value="{{ $branch->id }}"
+                                                {{ $department->branch_id == $branch->id ? 'selected' : '' }}>
+                                                {{ $branch->name }}</option>
+                                        @endforeach --}}
+                                    </select>
+                                    @error('branch')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Department<span
+                                            class="text-danger">*</span></label>
+                                    <select
+                                        class="form-select @error('name') is-invalid @enderror"aria-label="select example"
+                                        name="branch">
+                                        <option value="">Department</option>
+                                        {{-- @foreach ($branches as $branch)
+                                            <option value="{{ $branch->id }}"
+                                                {{ $department->branch_id == $branch->id ? 'selected' : '' }}>
+                                                {{ $branch->name }}</option>
+                                        @endforeach --}}
+                                    </select>
+                                    @error('branch')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
                                         {{ $user->is_active == 1 ? 'checked' : '' }} name="is_active">

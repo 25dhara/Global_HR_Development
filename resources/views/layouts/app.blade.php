@@ -17,7 +17,6 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/images/brand-logos/favicon.ico') }}" type="image/x-icon">
 
-
     <!-- Choices JS -->
     <script src="{{ asset('assets/libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 
@@ -51,8 +50,10 @@
 
     <link rel="stylesheet" href="{{ asset('assets/libs/swiper/swiper-bundle.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet">
+
     <!--Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
     @stack('child-scripts')
 
 
@@ -852,6 +853,10 @@
     <script src="{{ asset('assets/js/index.js') }}"></script>
 
 
+    <!-- Jquery Cdn -->
+    <script src="{{ asset('assets/js/jquery-3.6.1.min.js') }}"
+        integrity=" sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin=" anonymous"></script>
+
     <!-- Custom-Switcher JS -->
     <script src="{{ asset('assets/js/custom-switcher.min.js') }}"></script>
 
@@ -860,6 +865,12 @@
     <!-- Datatables Cdn -->
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}"></script>
+    <!-- Select2 Cdn -->
+    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
+
+    <!-- Internal Select-2.js -->
+    <script src="{{ asset('assets/js/select2.js') }}"></script>
+
 
 </body>
 

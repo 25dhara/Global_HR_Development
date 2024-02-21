@@ -139,7 +139,7 @@
                     aria-labelledby="mainHeaderProfile">
                     <Li>
                         <div class="header-navheading border-bottom">
-                            <h6 class="main-notification-title">Sonia Taylor</h6>
+                            <h6 class="main-notification-title"> {{ Auth::user()->name }}</h6>
                             <p class="main-notification-text mb-0">Web Designer</p>
                         </div>
                     </Li>
@@ -147,7 +147,7 @@
                     <li><a class="dropdown-item d-flex" href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fe fe-power fs-16 align-middle me-2"></i>Log Out</a>
-                        <form id="logout-form" action="" method="POST" class="d-none">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </li>

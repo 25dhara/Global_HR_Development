@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BranchController;
@@ -24,6 +25,7 @@ Route::get('/',             [AuthController::class, 'index'])->name('login');
 Route::get('/login',        [AuthController::class, 'index'])->name('login');
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
 Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
+Route::get('dashboard',     [HomeController::class, 'index'])->name('dashboard.index');
 
 
 Route::resource('user',            UserController::class);

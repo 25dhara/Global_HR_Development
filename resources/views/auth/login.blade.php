@@ -545,22 +545,47 @@
                                 <div class="row row-sm">
                                     <div class="card-body mt-2 mb-2">
                                         <div class="clearfix"></div>
-                                        <form>
+                                        <form method="post" action="{{ route('login.custom') }}">
+                                            @csrf
                                             <h5 class="text-start mb-2">Signin to Your Account</h5>
-                                            <p class="mb-4 text-muted fs-13 ms-0 text-start">Signin to create, discover
-                                                and connect with the global community</p>
+                                            @if (session('error'))
+                                                <div class="alert alert-danger">
+                                                    {{ session('error') }}
+                                                </div>
+                                            @endif
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                            <p class="mb-4 text-muted fs-13 ms-0 text-start"></p>
                                             <div class="form-group text-start">
                                                 <label class="form-label">Email</label>
-                                                <input class="form-control" placeholder="Enter your email"
-                                                    type="text">
+                                                <input class="form-control @error('email') is-invalid @enderror"
+                                                    placeholder="Email" type="email" value="{{ old('email') }}"
+                                                    name="email">
+                                                @error('email')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="form-group text-start">
                                                 <label class="form-label">Password</label>
-                                                <input class="form-control" placeholder="Enter your password"
-                                                    type="password">
+                                                <input class="form-control @error('password') is-invalid @enderror"
+                                                    placeholder="Password" type="password" name="password">
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="d-grid">
-                                                <a href="index.html" class="btn btn-primary">Sign In</a>
+                                                <button type="submit" class="btn btn-primary">Sign In</button>
                                             </div>
                                         </form>
                                         {{-- <div class="text-start mt-5 ms-0">
