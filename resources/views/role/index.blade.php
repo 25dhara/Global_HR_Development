@@ -37,8 +37,7 @@
                                     id="table">
                                     <thead>
                                         <tr>
-                                            <th class="wd-lg-8p"><span>Module</span></th>
-                                            <th class="wd-lg-8p"><span>Accesss</span></th>
+                                            <th class="wd-lg-8p"><span>Name</span></th>
                                             <th class="wd-lg-8p"><span>Description</span></th>
                                             <th class="wd-lg-20p"><span>Is Active</span></th>
                                             <th class="wd-lg-20p">Action</th>
@@ -53,11 +52,8 @@
                                         $('#table').DataTable({
                                             processing: true,
                                             serverSide: true,
-                                            ajax: '{{ route('permission.index') }}',
-                                            columns: [    {
-                                                        data: 'module_name',
-                                                        name: 'module_name'
-                                                    },
+                                            ajax: '{{ route('role.index') }}',
+                                            columns: [
                                                     {
                                                         data: 'name',
                                                         name: 'name'
@@ -87,13 +83,25 @@
                                                     orderable: false,
                                                     searchable: false,
                                                     render: function(data, type, full, meta) {
-                                                        var editUrl = '{{ route('permission.edit', ':id') }}'.replace(':id',
+                                                        var editUrl = '{{ route('role.edit', ':id') }}'.replace(':id', data);
+                                                        var deleteFormId = 'delete-form-' + data;
+                                                        var deleteUrl = '{{ route('role.destroy', ':id') }}'.replace(':id',
                                                             data);
-                                                        return '<a href="' + editUrl + '" class="btn btn-sm btn-info">' +
-                                                            '<i class="fe fe-edit-2"></i>' +
-                                                            '</a>';
-                                                    }
 
+                                                        return '<a href="' + editUrl +
+                                                            '" class="btn btn-sm btn-info"><i class="fe fe-edit-2"></i></a>' +
+                                                            '<a href="#" class="btn btn-sm btn-danger delete-link" ' +
+                                                            '   onclick="event.preventDefault(); document.getElementById(\'' +
+                                                            deleteFormId + '\').submit();">' +
+                                                            '   <i class="fe fe-trash"></i>' +
+                                                            '</a>' +
+                                                            '<form id="' + deleteFormId + '" ' +
+                                                            '   action="' + deleteUrl +
+                                                            '" method="POST" style="display: none;">' +
+                                                            '   @csrf' +
+                                                            '   @method('DELETE')' +
+                                                            '</form>';
+                                                    }
                                                 },
                                             ]
                                         });

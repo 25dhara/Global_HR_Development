@@ -27,7 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('role.create');
     }
 
     /**
@@ -35,7 +35,14 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        Role::create([
+            'name' => $request->name,
+            'description'=> $request->description,
+            'guard_name'=>'web',
+            'is_active' => $is_active,
+        ]);
+        return redirect()->route('role.index');
     }
 
     /**
@@ -51,7 +58,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        return view('role.edit',compact('role'));
     }
 
     /**
@@ -59,7 +66,10 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        $role->update(['name' => $request->name, 'description' => $request->description, 'is_active' => $is_active]);
+
+        return redirect()->route('role.index');
     }
 
     /**
@@ -67,6 +77,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        $role->delete();
+         return redirect()->route('role.index');
     }
 }
