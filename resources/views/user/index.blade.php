@@ -90,8 +90,11 @@
                                                     searchable: false,
                                                     render: function(data, type, full, meta) {
                                                         var editUrl = '{{ route('user.edit', ':id') }}'.replace(':id', data);
-                                                        return '<a href="' + editUrl + '" class="fas fa-edit"></a>';
+                                                        return '<a href="' + editUrl + '" class="btn btn-sm btn-info">' +
+                                                            '<i class="fe fe-edit-2"></i>' +
+                                                            '</a>';
                                                     }
+
                                                 },
                                             ]
                                         });

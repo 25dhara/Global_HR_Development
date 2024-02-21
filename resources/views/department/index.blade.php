@@ -27,7 +27,7 @@
                         <div class="card-header border-bottom-0 pb-0 d-block">
                             <div class="d-flex justify-content-between align-items-center">
                                 <label class="main-content-label mb-0 pt-1">Department</label>
-                                <a  href="{{ route('department.create') }}" class="btn btn-primary">Add Department</a>
+                                <a href="{{ route('department.create') }}" class="btn btn-primary">Add Department</a>
                             </div>
 
                         </div>
@@ -47,16 +47,13 @@
                                 </table>
                             </div>
                             @push('child-scripts')
-                                <!-- Datatables Cdn -->
-                                <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-                                <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
                                 <script>
                                     $(function() {
                                         $('#table').DataTable({
                                             processing: true,
                                             serverSide: true,
                                             ajax: '{{ route('department.index') }}',
-                                            columns: [ {
+                                            columns: [{
                                                     data: 'name',
                                                     name: 'name'
                                                 },
@@ -78,16 +75,19 @@
                                                         }
                                                     }
                                                 },
-
                                                 {
                                                     data: 'id',
                                                     name: 'actions',
                                                     orderable: false,
                                                     searchable: false,
                                                     render: function(data, type, full, meta) {
-                                                        var editUrl = '{{ route('department.edit', ':id') }}'.replace(':id', data);
-                                                        return '<a href="' + editUrl + '" class="fas fa-edit"></a>';
+                                                        var editUrl = '{{ route('department.edit', ':id') }}'.replace(':id',
+                                                            data);
+                                                        return '<a href="' + editUrl + '" class="btn btn-sm btn-info">' +
+                                                            '<i class="fe fe-edit-2"></i>' +
+                                                            '</a>';
                                                     }
+
                                                 },
                                             ]
                                         });

@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Module;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreModuleRequest;
 use App\Http\Requests\UpdateModuleRequest;
+use Yajra\DataTables\Facades\Datatables;
 
 class ModuleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $query = Module::query();
+            return Datatables::eloquent($query)->make(true);
+        }
+        return view('module.index');
     }
 
     /**
@@ -21,7 +27,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('module.create');
     }
 
     /**
@@ -29,7 +35,12 @@ class ModuleController extends Controller
      */
     public function store(StoreModuleRequest $request)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        Module::create([
+            'name' => $request->name,
+            'is_active' => $is_active,
+        ]);
+        return redirect()->route('module.index');
     }
 
     /**
@@ -45,15 +56,24 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
-        //
+        return view('module.edit', compact('module'));
     }
+    /**
+     * Update the specified resource in storage.
+     */
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateModuleRequest $request, Module $module)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        $module->update([
+            'name' => $request->name,
+            'is_active' => $is_active
+        ]);
+        return redirect()->route('module.index')->with('success', 'Module updated successfully');
     }
 
     /**
@@ -61,6 +81,8 @@ class ModuleController extends Controller
      */
     public function destroy(Module $module)
     {
-        //
+        $module->delete();
+        session()->flash('danger', 'Module Deleted successfully.');
+        return redirect()->route('module.index');
     }
 }
