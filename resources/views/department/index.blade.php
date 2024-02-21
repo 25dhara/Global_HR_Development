@@ -26,7 +26,7 @@
                     <div class="card custom-card">
                         <div class="card-header border-bottom-0 pb-0 d-block">
                             <div class="d-flex justify-content-between align-items-center">
-                                <label class="main-content-label mb-0 pt-1">Branch</label>
+                                <label class="main-content-label mb-0 pt-1">Department</label>
                                 <a  href="{{ route('department.create') }}" class="btn btn-primary">Add Department</a>
                             </div>
 
