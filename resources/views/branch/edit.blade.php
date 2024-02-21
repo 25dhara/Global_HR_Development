@@ -24,16 +24,22 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('branch.store') }}">
+                            <form method="PUT" action="{{ route('branch.update',$branch->id) }}">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="form-text" class="form-label fs-14 text-dark">Branch name</label>
                                     <input type="name" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" placeholder="Enter name" name="name" value="{{ old('name') }}">
+                                        id="name" placeholder="Enter name" name="name" value="{{ $branch->name }}">
                                     @error('name')
                                         <span class="error invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" type="checkbox" role="switch"
+                                        id="switch-primary" checked="" name="is_active" {{ $branch->is_active == 1 ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Update</button>
                             </form>

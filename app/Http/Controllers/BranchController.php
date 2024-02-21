@@ -5,14 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Branch;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
+use Yajra\DataTables\Facades\Datatables;
+use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        if ($request->ajax()) {
+            $query = Branch::query();
+            return Datatables::eloquent($query)->make(true);
+        }
         return view('branch.index');
     }
 

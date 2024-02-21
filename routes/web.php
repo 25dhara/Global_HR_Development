@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BranchController;
+use App\Models\Department;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +29,4 @@ use App\Http\Controllers\BranchController;
 
 Route::resource('user',            UserController::class);
 Route::resource('branch',            BranchController::class);
+Route::resource('department',            DepartmentController::class);

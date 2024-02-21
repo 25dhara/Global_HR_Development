@@ -68,6 +68,10 @@
                         <a  href="{{ route('branch.index') }}" class="side-menu__item">Branch
                         </a>
                     </li>
+                    <li class="slide">
+                        <a  href="{{ route('department.index') }}" class="side-menu__item">Department
+                        </a>
+                    </li>
                 </li>
                 <!-- End::slide -->
 

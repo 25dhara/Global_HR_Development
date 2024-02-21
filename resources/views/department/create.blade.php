@@ -24,16 +24,37 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('branch.store') }}">
+                            <form method="POST" action="{{ route('department.store') }}">
+                                @csrf
                                 <div class="mb-3">
-                                    <label for="form-text" class="form-label fs-14 text-dark">Department name</label>
+                                    <label for="form-text" class="form-label fs-14 text-dark">Department<span
+                                            class="text-danger">*</span> </label>
                                     <input type="name" class="form-control @error('name') is-invalid @enderror"
                                         id="name" placeholder="Enter name" name="name" value="{{ old('name') }}">
                                     @error('name')
-                                        <span class="error invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Branch <span
+                                            class="text-danger">*</span></label>
+                                    <select class="form-select @error('name') is-invalid @enderror"aria-label="select example" name="branch">
+                                        <option value="">Branch</option>
+                                        @foreach ($branches as $branch)
+                                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('branch')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
+                                        checked="" name="is_active">
+                                    <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Create</button>
                             </form>

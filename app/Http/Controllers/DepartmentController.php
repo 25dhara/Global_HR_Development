@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
+use App\Models\Branch;
 
 class DepartmentController extends Controller
 {
@@ -21,7 +22,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('department.create');
+        $branches = Branch::where('is_active',1)->get();
+        return view('department.create',compact('branches'));
     }
 
     /**
@@ -52,7 +54,8 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        return view('department.edit', compact('department'));
+        $branches = Branch::where('is_active',1)->get();
+        return view('department.edit', compact('department','branches'));
     }
 
     /**
@@ -60,7 +63,13 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        $department->update([
+            'name' => $request->name,
+            'branch_id'=>$request->branch,
+            'is_active' => $is_active
+        ]);
+        return redirect()->route('department.index')->with('success', 'Department updated successfully');
     }
 
     /**

@@ -25,6 +25,7 @@
                         </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('branch.store') }}">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="form-text" class="form-label fs-14 text-dark">Branch name</label>
                                     <input type="name" class="form-control @error('name') is-invalid @enderror"
@@ -34,6 +35,11 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                                <div class="form-check form-switch mb-2">
+                                    <input class="form-check-input" type="checkbox" role="switch"
+                                        id="switch-primary" checked="" name="is_active">
+                                    <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Create</button>
                             </form>
