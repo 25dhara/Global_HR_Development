@@ -27,20 +27,7 @@
                         <div class="card-header border-bottom-0 pb-0 d-block">
                             <div class="d-flex justify-content-between align-items-center">
                                 <label class="main-content-label mb-0 pt-1">User Table</label>
-                                <div class="ms-auto float-end">
-                                    <div class="">
-                                        <a href="javascript:void(0);" class="option-dots" data-bs-toggle="dropdown"
-                                            aria-haspopup="true" aria-expanded="false"><i
-                                                class="fe fe-more-horizontal"></i></a>
-                                        <a href="{{ url('user/create') }}" class="btn btn-primary">Add User</a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="javascript:void(0);">Today</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Week</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                                            <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
 
                         </div>
@@ -50,7 +37,6 @@
                                     id="table">
                                     <thead>
                                         <tr>
-                                            <th class="wd-lg-8p"><span>Id</span></th>
                                             <th class="wd-lg-8p"><span>Name</span></th>
                                             <th class="wd-lg-20p"><span>Email</span></th>
                                             <th class="wd-lg-20p"><span>Is Active</span></th>
@@ -62,9 +48,6 @@
                                 </table>
                             </div>
                             @push('child-scripts')
-                                <!-- Datatables Cdn -->
-                                <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-                                <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
                                 <script>
                                     $(function() {
                                         $('#table').DataTable({
@@ -72,9 +55,6 @@
                                             serverSide: true,
                                             ajax: '{{ route('user.index') }}',
                                             columns: [{
-                                                    data: 'id',
-                                                    name: 'id'
-                                                }, {
                                                     data: 'name',
                                                     name: 'name'
                                                 },
@@ -99,7 +79,7 @@
                                                     data: 'password',
                                                     name: 'password',
                                                     render: function(data, type, full, meta) {
-                                                        return '<button class="btn btn-sm btn-danger reset-password" data-id="' +
+                                                        return '<button class="btn btn-sm btn-primary reset-password" data-id="' +
                                                             full.id + '">Reset</button>';
                                                     }
                                                 },

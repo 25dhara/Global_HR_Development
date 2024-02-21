@@ -53,21 +53,30 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+
+    /**
+     * Update the specified resource in storage.
+     */
+
     public function edit(User $user)
     {
         // $roles = Role::all();
-        return view('user.edit', compact('user', 'roles'));
+        return view('user.edit', compact('user'));
     }
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        $user->update($request->all());
-        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
-        $user->assignRole($request->input('roles'));
-        return redirect()->route('user.index')
-            ->with('success', 'User updated successfully');
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'is_active' => $is_active
+        ]);
+        // print_r($user);
+        // die;
+        return redirect()->route('user.index')->with('success', 'User updated successfully');
     }
 
     /**

@@ -857,6 +857,9 @@
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <!-- Datatables Cdn -->
+    <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}"></script>
 
 </body>
 

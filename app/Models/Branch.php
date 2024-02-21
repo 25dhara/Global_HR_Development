@@ -13,4 +13,8 @@ class Branch extends Model
         'is_active',
         'created_by'
     ];
+    public function users()
+    {
+        return $this->hasMany(User::class, 'branch_id');
+    }
 }

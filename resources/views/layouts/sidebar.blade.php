@@ -8,7 +8,7 @@
             <img src="{{ asset('assets/images/brand-logos/desktop-logo.png') }}" class="desktop-logo" alt="logo">
             <img src="{{ asset('assets/images/brand-logos/toggle-dark.png') }}" class="toggle-dark" alt="logo">
             <img src="{{ asset('assets/images/brand-logos/toggle-logo.png') }}" class="toggle-logo" alt="logo">
-            <img src="{{ asset('assets/images/brand-logos/desktop-dark.png') }}" class="desktop-dark" alt="logo">
+            <img src="{{ asset('assets/images/brand-logos/logo.png') }}" class="desktop-dark" alt="logo">
         </a>
     </div>
     <!-- End::main-sidebar-header -->
@@ -54,7 +54,7 @@
                             <a href="javascript:void(0)">User Management</a>
                         </li>
                         <li class="slide">
-                            <a href="ecommerce-dashboard.html" class="side-menu__item">User</a>
+                            <a href="{{ route('user.index') }}" class="side-menu__item">User</a>
                         </li>
                         <li class="slide">
                             <a href="ecommerce-products.html" class="side-menu__item">Role</a>
@@ -64,14 +64,14 @@
                             </a>
                         </li>
                     </ul>
-                    <li class="slide">
-                        <a  href="{{ route('branch.index') }}" class="side-menu__item">Branch
-                        </a>
-                    </li>
-                    <li class="slide">
-                        <a  href="{{ route('department.index') }}" class="side-menu__item">Department
-                        </a>
-                    </li>
+                <li class="slide">
+                    <a href="{{ route('branch.index') }}" class="side-menu__item">Branch
+                    </a>
+                </li>
+                <li class="slide">
+                    <a href="{{ route('department.index') }}" class="side-menu__item">Department
+                    </a>
+                </li>
                 </li>
                 <!-- End::slide -->
 
