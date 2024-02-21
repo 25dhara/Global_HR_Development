@@ -17,13 +17,11 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        echo "ggg";
-        die;
-        // if ($request->ajax()) {
-        //     $query = User::with('creator', 'roles');
-        //     return Datatables::eloquent($query)->make(true);
-        // }
-        // return view('user.index');
+        if ($request->ajax()) {
+            $query = User::query();
+            return Datatables::eloquent($query)->make(true);
+        }
+        return view('user.index');
     }
     /**
      * Show the form for creating a new resource.

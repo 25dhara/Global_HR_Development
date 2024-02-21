@@ -51,6 +51,13 @@
 
     <link rel="stylesheet" href="{{ asset('assets/libs/swiper/swiper-bundle.min.css') }}">
 
+    <!--Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @stack('child-scripts')
+
+
+
+
 </head>
 
 <body>
