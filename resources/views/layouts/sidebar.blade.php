@@ -45,7 +45,7 @@
                     <a href="javascript:void(0);" class="side-menu__item">
                         <span class="shape1"></span>
                         <span class="shape2"></span>
-                        <i class="ti-shopping-cart-full side-menu__icon"></i>
+                        <i class="ti-user side-menu__icon"></i>
                         <span class="side-menu__label">User Management</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
