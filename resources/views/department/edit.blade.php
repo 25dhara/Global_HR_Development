@@ -42,7 +42,7 @@
                                     <label for="form-text" class="form-label fs-14 text-dark">Branch <span
                                             class="text-danger">*</span></label>
                                     <select class="form-select @error('name') is-invalid @enderror"aria-label="select example" name="branch">
-                                        {{-- <option value="">Branch</option> --}}
+                                        <option value="">Branch</option>
                                         @foreach ($branches as $branch)
                                             <option value="{{ $branch->id }}" {{ $department->branch_id == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
 
@@ -55,7 +55,7 @@
 
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
-                                        checked="" name="is_active">
+                                    {{ $department->is_active == 1 ? 'checked' : '' }} name="is_active">
                                     <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Update</button>

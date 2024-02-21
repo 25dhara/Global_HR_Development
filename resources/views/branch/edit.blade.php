@@ -39,9 +39,10 @@
                                 </div>
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input" type="checkbox" role="switch"
-                                        id="switch-primary" checked="" name="is_active" {{ $branch->is_active == 1 ? 'checked' : '' }}>
+                                        id="switch-primary"  name="is_active" {{ $branch->is_active == 1 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
+
                                 <button class="btn btn-primary" type="submit">Update</button>
                             </form>
                         </div>
