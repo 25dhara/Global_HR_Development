@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BranchController;
-use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
 
 /*
@@ -18,6 +19,12 @@ use App\Http\Controllers\PermissionController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/',             [AuthController::class, 'index'])->name('login');
+Route::get('/login',        [AuthController::class, 'index'])->name('login');
+Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
+Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
+
 
 Route::resource('user',            UserController::class);
 Route::resource('branch',          BranchController::class);
