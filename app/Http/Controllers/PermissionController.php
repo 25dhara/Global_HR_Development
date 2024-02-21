@@ -5,15 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Permission;
 use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
+use Illuminate\Http\Request;
+use App\Models\Module;
+use Yajra\DataTables\Facades\Datatables;
 
 class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
+        if ($request->ajax()) {
+            $query = Permission::with('module');
+
+            return Datatables::eloquent($query)
+            ->addColumn('module_name', function ($permission) {
+                return $permission->module->name;
+            })->make(true);
+        }
+
+        return view('permission.index');
     }
 
     /**
@@ -21,7 +34,8 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        $modules = Module::where('is_active', 1)->get();
+        return view('permission.create', compact('modules'));
     }
 
     /**
@@ -29,7 +43,31 @@ class PermissionController extends Controller
      */
     public function store(StorePermissionRequest $request)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        $module = Module::find($request->module);
+        $name = strtolower($module->name) . "-" . $request->access;
+
+        $haspermission = Permission::query()
+            ->where('name', $name)
+            ->where('module_id', $request->input('module_id'))
+            ->exists();
+
+        if ($haspermission) {
+            return back()->withErrors([
+                'access' => 'Access already exits.'
+            ]);
+        }
+
+        Permission::create([
+            'module_id' => $request->module,
+            'name' => $name,
+            'guard_name' => 'web',
+            'description' => $request->description,
+            'is_active' => $is_active,
+        ]);
+
+        return redirect()->route('permission.index')
+            ->with('success', 'Permission created successfully.');
     }
 
     /**
@@ -45,7 +83,8 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-        //
+        $modules = Module::where('is_active', 1)->get();
+        return view('permission.edit', compact('permission', 'modules'));
     }
 
     /**
@@ -53,7 +92,31 @@ class PermissionController extends Controller
      */
     public function update(UpdatePermissionRequest $request, Permission $permission)
     {
-        //
+        $is_active = $request->has('is_active') ? 1 : 0;
+        $module = Module::find($request->module);
+        $name = strtolower($module->name) . "-" . $request->access;
+
+        $haspermission = Permission::query()
+            ->where('name', $name)
+            ->where('module_id', $request->input('module'))
+            ->where('id', '!=', $permission->id)
+            ->exists();
+
+        if ($haspermission) {
+            return back()->withErrors([
+                'access' => 'Access already exits.'
+            ]);
+        }
+
+        $permission->update([
+            'module_id' => $request->module,
+            'name' => strtolower($module->name) . "-" . $request->access,
+            'guard_name' => 'web',
+            'description' => $request->description,
+            'is_active' => $is_active,
+
+        ]);
+        return redirect()->route('permission.index');
     }
 
     /**

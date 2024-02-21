@@ -5,15 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use Yajra\DataTables\Facades\Datatables;
+use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $query = Role::query();
+            return Datatables::eloquent($query)->make(true);
+        }
+        return view('role.index');
     }
 
     /**
