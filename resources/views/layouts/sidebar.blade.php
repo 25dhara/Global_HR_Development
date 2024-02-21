@@ -62,8 +62,12 @@
                         <li class="slide">
                             <a href="ecommerce-product-details.html" class="side-menu__item">Permissions
                             </a>
-
+                        </li>
                     </ul>
+                    <li class="slide">
+                        <a  href="{{ route('branch.index') }}" class="side-menu__item">Branch
+                        </a>
+                    </li>
                 </li>
                 <!-- End::slide -->
 

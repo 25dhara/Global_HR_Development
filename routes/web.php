@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BranchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ use App\Http\Controllers\UserController;
 // });
 
 Route::resource('user',            UserController::class);
+Route::resource('branch',            BranchController::class);

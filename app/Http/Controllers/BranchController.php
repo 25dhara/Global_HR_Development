@@ -13,7 +13,7 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return view('branch.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('branch.create');
     }
 
     /**
@@ -29,7 +29,13 @@ class BranchController extends Controller
      */
     public function store(StoreBranchRequest $request)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        Branch::create([
+            'name' => $request->name,
+            'is_active' => $is_active,
+            'created_by'=> 1
+        ]);
+        return redirect()->route('branch.index')->with('success', 'Branch created successfully');
     }
 
     /**
@@ -45,7 +51,7 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        //
+        return view('branch.edit', compact('branch'));
     }
 
     /**
@@ -53,7 +59,12 @@ class BranchController extends Controller
      */
     public function update(UpdateBranchRequest $request, Branch $branch)
     {
-        //
+        $is_active = $request->is_active == "on" ? 1 : 0;
+        $branch->update([
+            'name' => $request->name,
+            'is_active' => $is_active
+        ]);
+        return redirect()->route('branch.index')->with('success', 'Branch updated successfully');
     }
 
     /**
