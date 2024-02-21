@@ -25,7 +25,7 @@ class UpdateDepartmentRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                Rule::unique('roles')->ignore($this->route('department')),
+                Rule::unique('departments')->ignore($this->route('department')),
             ],
             'branch' => 'required',
         ];

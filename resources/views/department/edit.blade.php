@@ -26,6 +26,7 @@
                         <div class="card-body">
                             <form method="POST" action="{{ route('department.update',$department->id) }}">
                                 @csrf
+                                @method('PUT')
                                 <div class="mb-3">
                                     <label for="form-text" class="form-label fs-14 text-dark">Department<span
                                             class="text-danger">*</span> </label>
@@ -41,7 +42,7 @@
                                     <label for="form-text" class="form-label fs-14 text-dark">Branch <span
                                             class="text-danger">*</span></label>
                                     <select class="form-select @error('name') is-invalid @enderror"aria-label="select example" name="branch">
-                                        <option value="">Branch</option>
+                                        {{-- <option value="">Branch</option> --}}
                                         @foreach ($branches as $branch)
                                             <option value="{{ $branch->id }}" {{ $department->branch_id == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
 

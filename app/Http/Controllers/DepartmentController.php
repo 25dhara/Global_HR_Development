@@ -6,14 +6,20 @@ use App\Models\Department;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
 use App\Models\Branch;
+use Yajra\DataTables\Facades\Datatables;
+use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $query = Department::with('branch');
+            return Datatables::eloquent($query)->make(true);
+        }
         return view('department.index');
     }
 

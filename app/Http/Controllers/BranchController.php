@@ -67,10 +67,12 @@ class BranchController extends Controller
     public function update(UpdateBranchRequest $request, Branch $branch)
     {
         $is_active = $request->is_active == "on" ? 1 : 0;
+
         $branch->update([
             'name' => $request->name,
             'is_active' => $is_active
         ]);
+
         return redirect()->route('branch.index')->with('success', 'Branch updated successfully');
     }
 

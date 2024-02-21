@@ -24,8 +24,9 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="PUT" action="{{ route('branch.update',$branch->id) }}">
+                            <form method="POST" action="{{ route('branch.update',$branch->id) }}">
                                 @csrf
+                                @method('PUT')
                                 <div class="mb-3">
                                     <label for="form-text" class="form-label fs-14 text-dark">Branch name</label>
                                     <input type="name" class="form-control @error('name') is-invalid @enderror"
