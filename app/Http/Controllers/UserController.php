@@ -60,7 +60,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('user.edit', compact('user'));
+        $roles = Role::all();
+        return view('user.edit', compact('user','roles'));
     }
     /**
      * Update the specified resource in storage.
@@ -73,6 +74,8 @@ class UserController extends Controller
             'email' => $request->email,
             'is_active' => $is_active
         ]);
+        DB::table('model_has_roles')->where('model_id', $user->id)->delete();
+        $user->assignRole($request->input('roles'));
         return redirect()->route('user.index')->with('success', 'User updated successfully');
     }
 

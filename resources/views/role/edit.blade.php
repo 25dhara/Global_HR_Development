@@ -55,7 +55,7 @@
                                     <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Update</button>
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -77,10 +77,13 @@
                                     <div class="mt-2 pt-2 border-top">
                                         @foreach ($module->permissions as $permission)
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input"     name="permissions[]" type="checkbox"
-                                                    id="inlineCheckbox1" value="{{ $permission->id }}" />
-                                                <label class="form-check-label"
-                                                    for="inlineCheckbox1">{{ $permission->name }}</label>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" {{ $role->permissions && $role->permissions->contains('id',$permission->id) ? "checked" : "" }} name="permissions[]"  value="{{ $permission->id }}" id="checkebox-sm" >
+                                                        <label class="form-check-label" for="checkebox-sm">
+                                                            {{ $permission->name }}
+                                                        </label>
+                                                    </div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -91,6 +94,7 @@
                     </div>
                 </div>
             </div>
+        </form>
         </div>
     </div>
 @endsection

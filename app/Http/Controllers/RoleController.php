@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use Yajra\DataTables\Facades\Datatables;
@@ -68,8 +68,14 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
+
         $is_active = $request->is_active == "on" ? 1 : 0;
         $role->update(['name' => $request->name, 'description' => $request->description, 'is_active' => $is_active]);
+
+        if ($request->permissions) {
+            $selectedPermissions = $request->input('permissions', []);
+            $role->syncPermissions($selectedPermissions);
+        }
 
         return redirect()->route('role.index');
     }

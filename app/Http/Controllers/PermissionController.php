@@ -49,25 +49,27 @@ class PermissionController extends Controller
 
         $haspermission = Permission::query()
             ->where('name', $name)
-            ->where('module_id', $request->input('module_id'))
+            ->where('module_id', $request->input('module'))
             ->exists();
+
 
         if ($haspermission) {
             return back()->withErrors([
                 'access' => 'Access already exits.'
             ]);
+        }else{
+            Permission::create([
+                'module_id' => $request->module,
+                'name' => $name,
+                'guard_name' => 'web',
+                'description' => $request->description,
+                'is_active' => $is_active,
+            ]);
+
+            return redirect()->route('permission.index')
+                ->with('success', 'Permission created successfully.');
         }
 
-        Permission::create([
-            'module_id' => $request->module,
-            'name' => $name,
-            'guard_name' => 'web',
-            'description' => $request->description,
-            'is_active' => $is_active,
-        ]);
-
-        return redirect()->route('permission.index')
-            ->with('success', 'Permission created successfully.');
     }
 
     /**
@@ -106,17 +108,19 @@ class PermissionController extends Controller
             return back()->withErrors([
                 'access' => 'Access already exits.'
             ]);
+        }else{
+
+            $permission->update([
+                'module_id' => $request->module,
+                'name' => strtolower($module->name) . "-" . $request->access,
+                'guard_name' => 'web',
+                'description' => $request->description,
+                'is_active' => $is_active,
+
+            ]);
+            return redirect()->route('permission.index');
         }
 
-        $permission->update([
-            'module_id' => $request->module,
-            'name' => strtolower($module->name) . "-" . $request->access,
-            'guard_name' => 'web',
-            'description' => $request->description,
-            'is_active' => $is_active,
-
-        ]);
-        return redirect()->route('permission.index');
     }
 
     /**
