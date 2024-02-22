@@ -17,7 +17,6 @@ class Branch extends Model
     {
         return $this->hasMany(User::class, 'branch_id');
     }
-
     public function departments()
     {
         return $this->belongsToMany(Department::class, 'branch_department', 'branch_id', 'department_id');

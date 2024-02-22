@@ -18,7 +18,7 @@ class BranchController extends Controller
     {
 
         if ($request->ajax()) {
-            $query = Branch::query();
+            $query = Branch::with('departments');
             return Datatables::eloquent($query)->make(true);
         }
         return view('branch.index');

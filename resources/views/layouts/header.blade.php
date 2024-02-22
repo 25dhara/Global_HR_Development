@@ -104,4 +104,20 @@
     </div>
     <!-- End::main-header-container -->
 
+    {{-- <div class="card custom-card">
+        @if (session()->has('success'))
+            <div class="alert alert-outline-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        @if (session()->has('danger'))
+            <div class="alert alert-outline-danger alert-dismissible fade show" role="alert">
+                {{ session('danger') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+    </div> --}}
+  
 </header>
+

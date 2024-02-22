@@ -6,7 +6,6 @@
         <div class="container-fluid">
 
             <!-- Page Header -->
-
             <div class="d-md-flex d-block align-items-center justify-content-between page-header-breadcrumb">
                 <div>
                     <h2 class="main-content-title fs-24 mb-1">Department</h2>
@@ -17,7 +16,6 @@
                 </div>
 
             </div>
-
             <!-- Page Header Close -->
 
             <!-- Start::row-1 -->
@@ -29,7 +27,6 @@
                                 <label class="main-content-label mb-0 pt-1">Department</label>
                                 <a href="{{ route('department.create') }}" class="btn btn-primary">Add Department</a>
                             </div>
-
                         </div>
                         <div class="card-body">
                             <div class="table-responsive userlist-table">
@@ -38,12 +35,10 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-lg-8p"><span>Department</span></th>
-                                            {{-- <th class="wd-lg-8p"><span>Branch</span></th> --}}
                                             <th class="wd-lg-20p"><span>Is Active</span></th>
                                             <th class="wd-lg-20p">Action</th>
                                         </tr>
                                     </thead>
-
                                 </table>
                             </div>
                             @push('child-scripts')
@@ -57,11 +52,6 @@
                                                     data: 'name',
                                                     name: 'name'
                                                 },
-                                                // {
-                                                //     data: 'branch.name',
-                                                //     name: 'branch.name'
-                                                // },
-
                                                 {
                                                     data: 'is_active',
                                                     name: 'is_active',
@@ -87,20 +77,17 @@
                                                             '<i class="fe fe-edit-2"></i>' +
                                                             '</a>';
                                                     }
-
                                                 },
                                             ]
                                         });
                                     });
                                 </script>
                             @endpush
-
                         </div>
                     </div>
                 </div><!-- COL END -->
             </div>
             <!--End::row-1 -->
-
         </div>
     </div>
     <!-- End::app-content -->

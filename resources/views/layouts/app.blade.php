@@ -554,8 +554,14 @@
         @include('layouts.sidebar')
         <!-- End::app-sidebar -->
         <!-- Start::app-content -->
-        @yield('content')
-
+        <div class="main-content app-content">
+            <div class="alert alert-solid-primary alert-dismissible fade show">
+                A simple outline primary alert—check it out!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
+                        class="bi bi-x"></i></button>
+            </div>
+            @yield('content')
+        </div>
         <!-- End::app-content -->
         <!-- Footer Start -->
         <footer class="footer mt-auto py-3 bg-white text-center">
@@ -614,6 +620,9 @@
     <!-- Main-Dashboard -->
     <script src="{{ asset('assets/js/index.js') }}"></script>
 
+    <!-- Simplebar JS -->
+    <script src="{{ asset('assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('assets/js/simplebar.js') }}"></script>
 
     <!-- Jquery Cdn -->
     <script src="{{ asset('assets/js/jquery-3.6.1.min.js') }}"
@@ -624,6 +633,7 @@
 
     <!-- Custom JS -->
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+
     <!-- Datatables Cdn -->
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}"></script>
