@@ -43,7 +43,8 @@
                                     <select class="js-example-basic-multiple @error('department') is-invalid @enderror"
                                         name="departments[]" multiple="multiple">
                                         @foreach ($departments as $department)
-                                            <option value="{{ $department->id }}" {{ $branch->departments->contains($department->id) ? 'selected' : '' }}>
+                                            <option value="{{ $department->id }}"
+                                                {{ $branch->departments->contains($department->id) ? 'selected' : '' }}>
                                                 {{ $department->name }}</option>
                                         @endforeach
                                     </select>

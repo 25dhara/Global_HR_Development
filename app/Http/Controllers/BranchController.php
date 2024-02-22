@@ -59,7 +59,7 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        $departments = Department::where('is_active', 1)->where('branch_id', $branch->id)->get();
+        $departments = Department::where('is_active', 1)->get();
         return view('branch.edit', compact('branch', 'departments'));
     }
 
