@@ -25,12 +25,13 @@ Route::get('/',             [AuthController::class, 'index'])->name('login');
 Route::get('/login',        [AuthController::class, 'index'])->name('login');
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
 Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
-Route::get('dashboard',     [HomeController::class, 'index'])->name('dashboard.index');
 
-
-Route::resource('user',            UserController::class);
-Route::resource('branch',          BranchController::class);
-Route::resource('department',      DepartmentController::class);
-Route::resource('role',            RoleController::class);
-Route::resource('module',          ModuleController::class);
-Route::resource('permission',      PermissionController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard',     [HomeController::class, 'index'])->name('dashboard.index');
+    Route::resource('user',            UserController::class);
+    Route::resource('branch',          BranchController::class);
+    Route::resource('department',      DepartmentController::class);
+    Route::resource('role',            RoleController::class);
+    Route::resource('module',          ModuleController::class);
+    Route::resource('permission',      PermissionController::class);
+});
