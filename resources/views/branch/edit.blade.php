@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container-fluid">
-
         <div class="d-md-flex d-block align-items-center justify-content-between page-header-breadcrumb">
             <div>
                 <h2 class="main-content-title fs-24 mb-1">Branch</h2>
@@ -11,11 +10,9 @@
                     <li class="breadcrumb-item active" aria-current="page">Branch</li>
                 </ol>
             </div>
-
         </div>
         <div class="row row-sm">
             <div class="col-xl-6">
-
                 <div class="card custom-card">
                     <div class="card-header justify-content-between">
                         <div class="card-title">
@@ -55,16 +52,11 @@
                                     name="is_active" {{ $branch->is_active == 1 ? 'checked' : '' }}>
                                 <label class="form-check-label" for="switch-primary">Active</label>
                             </div>
-
                             <button class="btn btn-primary" type="submit">Update</button>
                         </form>
-                    </div>
-                    <div class="card-footer d-none border-top-0">
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

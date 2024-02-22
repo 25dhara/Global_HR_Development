@@ -13,7 +13,6 @@
                 </ol>
             </div>
         </div>
-
         <!-- Page Header Close -->
         <!-- Start::row-1 -->
         <div class="row row-sm">
@@ -75,7 +74,6 @@
                                                     }
                                                 }
                                             },
-
                                             {
                                                 data: 'id',
                                                 name: 'actions',
@@ -87,7 +85,6 @@
                                                         '<i class="fe fe-edit-2"></i>' +
                                                         '</a>';
                                                 }
-
                                             },
                                         ]
                                     });

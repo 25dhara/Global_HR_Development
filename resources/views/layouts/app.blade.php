@@ -555,11 +555,18 @@
         <!-- End::app-sidebar -->
         <!-- Start::app-content -->
         <div class="main-content app-content">
-            <div class="alert alert-solid-primary alert-dismissible fade show">
-                A simple outline primary alert—check it out!
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
-                        class="bi bi-x"></i></button>
-            </div>
+            @if (session()->has('success'))
+                <div class="alert alert-solid-success alert-dismissible fade show"> {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
+                            class="bi bi-x"></i></button>
+                </div>
+            @endif
+            @if (session()->has('danger'))
+                <div class="alert alert-solid-danger alert-dismissible fade show"> {{ session('danger') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
+                            class="bi bi-x"></i></button>
+                </div>
+            @endif
             @yield('content')
         </div>
         <!-- End::app-content -->
