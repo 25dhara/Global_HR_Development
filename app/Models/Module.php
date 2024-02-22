@@ -14,4 +14,8 @@ class Module extends Model
         'name',
         'is_active'
     ];
+    public function permissions()
+    {
+        return $this->hasMany(Permission::class, 'module_id');
+    }
 }

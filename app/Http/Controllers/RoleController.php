@@ -7,6 +7,7 @@ use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use Yajra\DataTables\Facades\Datatables;
 use Illuminate\Http\Request;
+use App\Models\Module;
 
 class RoleController extends Controller
 {
@@ -58,7 +59,8 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        return view('role.edit',compact('role'));
+        $modulesWithPermissions = Module::where('is_active', 1)->with('permissions')->get();
+        return view('role.edit',compact('role','modulesWithPermissions'));
     }
 
     /**

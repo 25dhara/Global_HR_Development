@@ -16,7 +16,6 @@
             </div>
             <div class="row row-sm">
                 <div class="col-xl-6">
-
                     <div class="card custom-card">
                         <div class="card-header justify-content-between">
                             <div class="card-title">
@@ -58,26 +57,36 @@
                                 <button class="btn btn-primary" type="submit">Update</button>
                             </form>
                         </div>
-                        <div class="card-footer d-none border-top-0">
-                            <!-- Prism Code -->
-                            <pre class="language-html"><code class="language-html">&lt;div class="mb-3"&gt;
-&lt;label for="form-text" class="form-label fs-14 text-dark"&gt;Enter name&lt;/label&gt;
-&lt;input type="text" class="form-control" id="form-text" placeholder=""&gt;
-&lt;/div&gt;
-&lt;div class="mb-3"&gt;
-&lt;label for="form-password" class="form-label fs-14 text-dark"&gt;Enter
-Password&lt;/label&gt;
-&lt;input type="password" class="form-control" id="form-password" placeholder=""&gt;
-&lt;/div&gt;
-&lt;div class="form-check mb-3"&gt;
-&lt;input class="form-check-input" type="checkbox" value="" id="invalidCheck"
-required=""&gt;
-&lt;label class="form-check-label" for="invalidCheck"&gt;
-Accept Policy
-&lt;/label&gt;
-&lt;/div&gt;
-&lt;button class="btn btn-primary" type="submit"&gt;Submit&lt;/button&gt;</code></pre>
-                            <!-- Prism Code -->
+                    </div>
+                </div>
+            </div>
+            <div class="row row-sm">
+                <div class="col-xl-12">
+                    <div class="card custom-card">
+                        <div class="card-header justify-content-between">
+                            <div class="card-title">
+                                Assign Permission
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            @foreach ($modulesWithPermissions as $module)
+                            <div class="toast fade show mt-2 col-12" role="alert" aria-live="assertive" aria-atomic="true" style="width: auto">
+                                <div class="toast-body">
+                                    <strong class="me-auto">{{ $module->name }}</strong>
+
+                                    <div class="mt-2 pt-2 border-top">
+                                        @foreach ($module->permissions as $permission)
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input"     name="permissions[]" type="checkbox"
+                                                    id="inlineCheckbox1" value="{{ $permission->id }}" />
+                                                <label class="form-check-label"
+                                                    for="inlineCheckbox1">{{ $permission->name }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
