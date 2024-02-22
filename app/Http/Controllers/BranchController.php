@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Department;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\Datatables;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
-use Yajra\DataTables\Facades\Datatables;
-use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
@@ -40,7 +41,7 @@ class BranchController extends Controller
         Branch::create([
             'name' => $request->name,
             'is_active' => $is_active,
-            'created_by'=> 1
+            'created_by' => 1
         ]);
         return redirect()->route('branch.index')->with('success', 'Branch created successfully');
     }
@@ -58,7 +59,8 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        return view('branch.edit', compact('branch'));
+        $departments = Department::where('is_active', 1)->where('branch_id', $branch->id)->get();
+        return view('branch.edit', compact('branch', 'departments'));
     }
 
     /**
@@ -72,7 +74,8 @@ class BranchController extends Controller
             'name' => $request->name,
             'is_active' => $is_active
         ]);
-
+        $departmentIds = $request->input('departments', []);
+        $branch->departments()->sync($departmentIds);
         return redirect()->route('branch.index')->with('success', 'Branch updated successfully');
     }
 

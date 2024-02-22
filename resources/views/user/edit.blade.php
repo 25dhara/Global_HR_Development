@@ -50,7 +50,7 @@
                                     <label for="form-text" class="form-label fs-14 text-dark">Branch <span
                                             class="text-danger">*</span></label>
                                     <select
-                                        class="form-select @error('name') is-invalid @enderror"aria-label="select example"
+                                        class="js-example-basic-single1 @error('name') is-invalid @enderror"aria-label="select example"
                                         name="branch">
                                         <option value="">Branch</option>
                                         {{-- @foreach ($branches as $branch)
@@ -67,7 +67,7 @@
                                     <label for="form-text" class="form-label fs-14 text-dark">Department<span
                                             class="text-danger">*</span></label>
                                     <select
-                                        class="form-select @error('name') is-invalid @enderror"aria-label="select example"
+                                        class="js-example-basic-single1 @error('name') is-invalid @enderror"aria-label="select example"
                                         name="branch">
                                         <option value="">Department</option>
                                         {{-- @foreach ($branches as $branch)

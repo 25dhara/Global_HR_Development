@@ -38,7 +38,7 @@
                                     <thead>
                                         <tr>
                                             <th class="wd-lg-8p"><span>Department</span></th>
-                                            <th class="wd-lg-8p"><span>Branch</span></th>
+                                            {{-- <th class="wd-lg-8p"><span>Branch</span></th> --}}
                                             <th class="wd-lg-20p"><span>Is Active</span></th>
                                             <th class="wd-lg-20p">Action</th>
                                         </tr>
@@ -57,10 +57,10 @@
                                                     data: 'name',
                                                     name: 'name'
                                                 },
-                                                {
-                                                    data: 'branch.name',
-                                                    name: 'branch.name'
-                                                },
+                                                // {
+                                                //     data: 'branch.name',
+                                                //     name: 'branch.name'
+                                                // },
 
                                                 {
                                                     data: 'is_active',

@@ -28,8 +28,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        $branches = Branch::where('is_active',1)->get();
-        return view('department.create',compact('branches'));
+        $branches = Branch::where('is_active', 1)->get();
+        return view('department.create', compact('branches'));
     }
 
     /**
@@ -40,9 +40,9 @@ class DepartmentController extends Controller
         $is_active = $request->is_active == "on" ? 1 : 0;
         Department::create([
             'name' => $request->name,
-            'branch_id' => $request->branch,
+            'branch_id' => 0,
             'is_active' => $is_active,
-            'created_by'=> 1
+            'created_by' => 1
         ]);
         return redirect()->route('department.index')->with('success', 'Department created successfully');
     }
@@ -60,8 +60,8 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        $branches = Branch::where('is_active',1)->get();
-        return view('department.edit', compact('department','branches'));
+        $branches = Branch::where('is_active', 1)->get();
+        return view('department.edit', compact('department', 'branches'));
     }
 
     /**
@@ -72,7 +72,7 @@ class DepartmentController extends Controller
         $is_active = $request->is_active == "on" ? 1 : 0;
         $department->update([
             'name' => $request->name,
-            'branch_id'=>$request->branch,
+            'branch_id' => 0,
             'is_active' => $is_active
         ]);
         return redirect()->route('department.index')->with('success', 'Department updated successfully');

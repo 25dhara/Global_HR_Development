@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('branch.update',$branch->id) }}">
+                            <form method="POST" action="{{ route('branch.update', $branch->id) }}">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
@@ -37,9 +37,23 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Department <span
+                                            class="text-danger">*</span></label>
+                                    <select class="js-example-basic-multiple @error('department') is-invalid @enderror"
+                                        name="departments[]" multiple="multiple">
+                                        @foreach ($departments as $department)
+                                            <option value="{{ $department->id }}" {{ $branch->departments->contains($department->id) ? 'selected' : '' }}>
+                                                {{ $department->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('department')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                                 <div class="form-check form-switch mb-2">
-                                    <input class="form-check-input" type="checkbox" role="switch"
-                                        id="switch-primary"  name="is_active" {{ $branch->is_active == 1 ? 'checked' : '' }}>
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
+                                        name="is_active" {{ $branch->is_active == 1 ? 'checked' : '' }}>
                                     <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
 

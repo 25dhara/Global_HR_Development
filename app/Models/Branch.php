@@ -17,4 +17,12 @@ class Branch extends Model
     {
         return $this->hasMany(User::class, 'branch_id');
     }
+    public function activeDepartments()
+    {
+        return Department::where('is_active', 1)->where('branch_id', $this->id)->get();
+    }
+    public function departments()
+    {
+        return $this->belongsToMany(Department::class, 'branch_department', 'branch_id', 'department_id');
+    }
 }

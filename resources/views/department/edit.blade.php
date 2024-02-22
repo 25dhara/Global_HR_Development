@@ -24,14 +24,15 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('department.update',$department->id) }}">
+                            <form method="POST" action="{{ route('department.update', $department->id) }}">
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3">
                                     <label for="form-text" class="form-label fs-14 text-dark">Department<span
                                             class="text-danger">*</span> </label>
                                     <input type="name" class="form-control @error('name') is-invalid @enderror"
-                                        id="name" placeholder="Enter name" name="name" value="{{$department->name}}">
+                                        id="name" placeholder="Enter name" name="name"
+                                        value="{{ $department->name }}">
                                     @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -41,11 +42,14 @@
                                 <div class="mb-3">
                                     <label for="form-text" class="form-label fs-14 text-dark">Branch <span
                                             class="text-danger">*</span></label>
-                                    <select class="form-select @error('name') is-invalid @enderror"aria-label="select example" name="branch">
+                                    <select
+                                        class="js-example-basic-single1 @error('name') is-invalid @enderror"aria-label="select example"
+                                        name="branch">
                                         <option value="">Branch</option>
                                         @foreach ($branches as $branch)
-                                            <option value="{{ $branch->id }}" {{ $department->branch_id == $branch->id ? 'selected' : '' }}>{{ $branch->name }}</option>
-
+                                            <option value="{{ $branch->id }}"
+                                                {{ $department->branch_id == $branch->id ? 'selected' : '' }}>
+                                                {{ $branch->name }}</option>
                                         @endforeach
                                     </select>
                                     @error('branch')
@@ -53,9 +57,13 @@
                                     @enderror
                                 </div>
 
+
+
+
+
                                 <div class="form-check form-switch mb-2">
                                     <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
-                                    {{ $department->is_active == 1 ? 'checked' : '' }} name="is_active">
+                                        {{ $department->is_active == 1 ? 'checked' : '' }} name="is_active">
                                     <label class="form-check-label" for="switch-primary">Active</label>
                                 </div>
                                 <button class="btn btn-primary" type="submit">Update</button>
