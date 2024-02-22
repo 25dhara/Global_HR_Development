@@ -83,6 +83,8 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+        return redirect()->route('department.index')
+            ->with('danger', 'Department deleted successfully');
     }
 }

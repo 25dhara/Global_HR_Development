@@ -48,7 +48,6 @@
                                                 data: 'name',
                                                 name: 'name'
                                             },
-
                                             {
                                                 data: 'is_active',
                                                 name: 'is_active',
@@ -100,5 +99,5 @@
         </div>
         <!--End::row-1 -->
     </div>
-    <!-- End::
+    <!-- End::app-content -->
 @endsection

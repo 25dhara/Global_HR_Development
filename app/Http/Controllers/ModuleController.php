@@ -40,7 +40,8 @@ class ModuleController extends Controller
             'name' => $request->name,
             'is_active' => $is_active,
         ]);
-        return redirect()->route('module.index');
+        return redirect()->route('module.index')->with('success', 'Module created successfully');
+        // return redirect()->route('module.index')->with('success', 'Module updated successfully');
     }
 
     /**

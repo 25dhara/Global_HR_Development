@@ -13,17 +13,6 @@
                 </ol>
             </div>
         </div>
-        <div class="input-group">
-            <div class="input-group-btn search-panel">
-                <select class="js-example-basic-single" name="state" data-trigger>
-                    <option value="s-1">Choose one</option>
-                    <option value="s-2">T-Projects...</option>
-                    <option value="s-3">Microsoft Project</option>
-                    <option value="s-4">Risk Management</option>
-                    <option value="s-5">Team Building</option>
-                </select>
-            </div>
-        </div>
         <!-- Page Header Close -->
         <!-- Start::row-1 -->
         <div class="row row-sm">
@@ -109,7 +98,6 @@
             </div><!-- COL END -->
         </div>
         <!--End::row-1 -->
-
     </div>
-    <!-- End::
+    <!-- End::app-content -->
 @endsection

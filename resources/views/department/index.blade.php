@@ -69,9 +69,24 @@
                                                 render: function(data, type, full, meta) {
                                                     var editUrl = '{{ route('department.edit', ':id') }}'.replace(':id',
                                                         data);
-                                                    return '<a href="' + editUrl + '" class="btn btn-sm btn-info">' +
-                                                        '<i class="fe fe-edit-2"></i>' +
-                                                        '</a>';
+                                                    var deleteFormId = 'delete-form-' + data;
+                                                    var deleteUrl = '{{ route('department.destroy', ':id') }}'.replace(
+                                                        ':id',
+                                                        data);
+
+                                                    return '<a href="' + editUrl +
+                                                        '" class="btn btn-sm btn-info"><i class="fe fe-edit-2"></i></a>' +
+                                                        '<a href="#" class="btn btn-sm btn-danger delete-link" ' +
+                                                        '   onclick="event.preventDefault(); document.getElementById(\'' +
+                                                        deleteFormId + '\').submit();">' +
+                                                        '   <i class="fe fe-trash"></i>' +
+                                                        '</a>' +
+                                                        '<form id="' + deleteFormId + '" ' +
+                                                        '   action="' + deleteUrl +
+                                                        '" method="POST" style="display: none;">' +
+                                                        '   @csrf' +
+                                                        '   @method('DELETE')' +
+                                                        '</form>';
                                                 }
                                             },
                                         ]
