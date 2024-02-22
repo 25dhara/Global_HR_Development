@@ -74,7 +74,9 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
-            'is_active' => $is_active
+            'is_active' => $is_active,
+            // 'branch_id' => $request->branch,
+            // 'department_id' => $request->department
         ]);
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
         $user->assignRole($request->input('roles'));

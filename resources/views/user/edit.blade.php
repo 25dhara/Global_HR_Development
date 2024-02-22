@@ -63,7 +63,7 @@
                                         class="text-danger">*</span></label>
                                 <select
                                     class="js-example-basic-single1 @error('name') is-invalid @enderror"aria-label="select example"
-                                    name="branch">
+                                    name="branch" id="branchSelect">
                                     <option value="">Branch</option>
                                     @foreach ($branches as $branch)
                                         <option value="{{ $branch->id }}">
@@ -75,14 +75,14 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="form-text" class="form-label fs-14 text-dark">Department<span
+                                <label for="form-text" class="form-label fs-14 text-dark">Department <span
                                         class="text-danger">*</span></label>
-                                <select
-                                    class="js-example-basic-single1 @error('name') is-invalid @enderror"aria-label="select example"
-                                    name="branch">
+                                <select id="departmentSelect"
+                                    class="js-example-basic-single1 form-control @error('department') is-invalid @enderror"
+                                    aria-label="select example" name="department">
                                     <option value="">Department</option>
                                 </select>
-                                @error('branch')
+                                @error('department')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -101,3 +101,6 @@
         </div>
     </div>
 @endsection
+@push('child-scripts')
+
+@endpush
