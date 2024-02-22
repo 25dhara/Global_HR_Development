@@ -28,6 +28,7 @@ Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard',     [HomeController::class, 'index'])->name('dashboard.index');
+
     Route::resource('user',            UserController::class);
     Route::resource('branch',          BranchController::class);
     Route::resource('department',      DepartmentController::class);
