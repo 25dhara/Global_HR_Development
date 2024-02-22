@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\Datatables;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
+use App\Models\Branch;
 
 class UserController extends Controller
 {
@@ -60,8 +61,9 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $roles = Role::all();
-        return view('user.edit', compact('user','roles'));
+        $roles = Role::where('is_active',1)->get();
+        $branches = Branch::where('is_active',1)->get();
+        return view('user.edit', compact('user','roles','branches'));
     }
     /**
      * Update the specified resource in storage.

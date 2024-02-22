@@ -27,7 +27,7 @@
                         <div class="card-header border-bottom-0 pb-0 d-block">
                             <div class="d-flex justify-content-between align-items-center">
                                 <label class="main-content-label mb-0 pt-1">Role</label>
-                                <a  href="{{ route('role.create') }}" class="btn btn-primary">Add Role</a>
+                                <a href="{{ route('role.create') }}" class="btn btn-primary">Add Role</a>
                             </div>
 
                         </div>
@@ -39,6 +39,7 @@
                                         <tr>
                                             <th class="wd-lg-8p"><span>Name</span></th>
                                             <th class="wd-lg-8p"><span>Description</span></th>
+                                            <th class="wd-lg-8p"><span>Users</span></th>
                                             <th class="wd-lg-20p"><span>Is Active</span></th>
                                             <th class="wd-lg-20p">Action</th>
                                         </tr>
@@ -49,19 +50,26 @@
                             @push('child-scripts')
                                 <script>
                                     $(function() {
+                                        var notificationIconBadge = $('#notification-icon-badge');
                                         $('#table').DataTable({
                                             processing: true,
                                             serverSide: true,
                                             ajax: '{{ route('role.index') }}',
-                                            columns: [
-                                                    {
-                                                        data: 'name',
-                                                        name: 'name'
-                                                    },
-                                                    {
-                                                        data: 'description',
-                                                        name: 'description'
-                                                    },
+                                            columns: [{
+                                                    data: 'name',
+                                                    name: 'name'
+                                                },
+                                                {
+                                                    data: 'description',
+                                                    name: 'description'
+                                                },
+                                                {
+                                                    data: 'users_count',
+                                                    name: 'users_count',
+                                                    render: function(data, type, full, meta) {
+                                                        return '<span class="badge bg-primary">' + data + '</span>';
+                                                    }
+                                                },
 
                                                 {
                                                     data: 'is_active',

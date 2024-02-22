@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePermissionRequest;
 use Illuminate\Http\Request;
 use App\Models\Module;
 use Yajra\DataTables\Facades\Datatables;
+use Spatie\Permission\Models\Role;
 
 class PermissionController extends Controller
 {
@@ -16,14 +17,19 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-
         if ($request->ajax()) {
-            $query = Permission::with('module');
+            $permissions = Permission::with('module')
+                ->withCount('roles')
+                ->get();
 
-            return Datatables::eloquent($query)
-            ->addColumn('module_name', function ($permission) {
-                return $permission->module->name;
-            })->make(true);
+            return Datatables::of($permissions)
+                ->addColumn('module_name', function ($permission) {
+                    return $permission->module->name;
+                })
+                ->addColumn('roles_count', function ($permission) {
+                    return $permission->roles_count;
+                })
+                ->make(true);
         }
 
         return view('permission.index');
@@ -120,7 +126,6 @@ class PermissionController extends Controller
             ]);
             return redirect()->route('permission.index');
         }
-
     }
 
     /**
@@ -128,6 +133,8 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        session()->flash('danger', 'Permission Deleted successfully.');
+        return redirect()->route('permission.index');
     }
 }

@@ -17,7 +17,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Role::query();
+            $query = Role::withCount('users');
             return Datatables::eloquent($query)->make(true);
         }
         return view('role.index');
