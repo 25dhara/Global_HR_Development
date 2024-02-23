@@ -74,21 +74,10 @@ class UserController extends Controller
         ]);
         return redirect()->route('user.index');
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
-    }
+
     /**
      * Show the form for editing the specified resource.
      */
-
-    /**
-     * Update the specified resource in storage.
-     */
-
     public function edit(User $user)
     {
         $roles = Role::where('is_active', 1)->get();
@@ -123,12 +112,14 @@ class UserController extends Controller
         return redirect()->route('user.index')
             ->with('danger', 'User deleted successfully');
     }
+
     public function getDepartments(Request $request, $branch)
     {
         $branch = Branch::findOrFail($branch);
         $departments = $branch->departments;
         return response()->json($departments);
     }
+
     public function resetPasswordForm($id)
     {
         $user = User::find($id);
@@ -143,7 +134,6 @@ class UserController extends Controller
         }
         $user->password = Hash::make($request->password);
         $user->save();
-
         return redirect()->route('user.index')->with('success', 'Password reset successfully!');
     }
 }

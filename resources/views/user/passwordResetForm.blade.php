@@ -19,7 +19,6 @@
                             Password Reset
                         </div>
                     </div>
-
                     <div class="card-body">
                         <form method="POST" action="{{ route('user.resetPassword', $user->id) }}">
                             @csrf
