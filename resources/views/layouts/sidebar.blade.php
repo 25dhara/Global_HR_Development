@@ -2,7 +2,7 @@
 
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
-        <a href="index.html" class="header-logo">
+        <a href="" class="header-logo">
             <img src="{{ asset('assets/images/brand-logos/TKA.jpg') }}" class="toggle-dark" alt="logo">
             <img src="{{ asset('assets/images/brand-logos/logo.png') }}" class="desktop-dark" alt="logo">
         </a>

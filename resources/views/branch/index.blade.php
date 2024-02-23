@@ -37,6 +37,7 @@
                         @push('child-scripts')
                             <script>
                                 $(function() {
+                                    var notificationIconBadge = $('#notification-icon-badge');
                                     $('#table').DataTable({
                                         processing: true,
                                         serverSide: true,
@@ -50,13 +51,15 @@
                                                 name: 'departments',
                                                 render: function(data, type, full, meta) {
                                                     var departments = data.map(function(department) {
-                                                        return department
-                                                            .name;
-                                                    }).join(', ');
+                                                        return '<span class="badge bg-outline-primary rounded-pill">' +
+                                                            department
+                                                            .name + '</span>';
+                                                    });
 
                                                     return departments;
                                                 }
                                             },
+
                                             {
                                                 data: 'is_active',
                                                 name: 'is_active',
