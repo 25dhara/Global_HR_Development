@@ -150,6 +150,14 @@
                                         $('#table').DataTable().ajax.reload();
                                     });
                                 });
+                                $(document).on('click', '.reset-password', function() {
+                                    // Get the user ID from the button data attribute
+                                    var userId = $(this).data('id');
+
+                                    // Redirect to the password reset form URL
+                                    window.location.href = "{{ route('user.resetPasswordForm', ['id' => ':userId']) }}".replace(':userId',
+                                        userId);
+                                });
                             </script>
                         @endpush
                     </div>
