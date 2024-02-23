@@ -19,37 +19,35 @@
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 grid-margin">
                 <div class="card custom-card">
                     <div class="card-body">
-                        <div class="table-responsive userlist-table">
-                            <div class="row">
-                                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 grid-margin">
-                                    <div class="mb-3">
-                                        <label for="form-text" class="form-label fs-14 text-dark">Branch</label>
-                                        <select class="js-example-basic-single1" aria-label="select example" name="branch"
-                                            id="branch_id">
-                                            <option value="">All</option>
-                                            @foreach ($branches as $branch)
-                                                <option value="{{ $branch->id }}">
-                                                    {{ $branch->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                        <div class="row">
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 grid-margin">
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Branch</label>
+                                    <select class="js-example-basic-single1" aria-label="select example" name="branch"
+                                        id="branch_id">
+                                        <option value="">All</option>
+                                        @foreach ($branches as $branch)
+                                            <option value="{{ $branch->id }}">
+                                                {{ $branch->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 grid-margin">
-                                    <div class="mb-3">
-                                        <label for="form-text" class="form-label fs-14 text-dark">Department</label>
-                                        <select id="department_id" class="js-example-basic-single1 form-control"
-                                            aria-label="select example" name="department">
-                                            <option value="">All</option>
-                                            @foreach ($departments as $department)
-                                                <option value="{{ $department->id }}">
-                                                    {{ $department->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 grid-margin">
+                                <div class="mb-3">
+                                    <label for="form-text" class="form-label fs-14 text-dark">Department</label>
+                                    <select id="department_id" class="js-example-basic-single1 form-control"
+                                        aria-label="select example" name="department">
+                                        <option value="">All</option>
+                                        @foreach ($departments as $department)
+                                            <option value="{{ $department->id }}">
+                                                {{ $department->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                                <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 grid-margin d-flex align-items-center">
-                                    <button class="btn btn-primary ms-3" id="searchBtn" type="button">Search</button>
-                                </div>
+                            </div>
+                            <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 grid-margin d-flex align-items-center">
+                                <button class="btn btn-primary ms-3" id="searchBtn" type="button">Search</button>
                             </div>
                         </div>
                     </div>

@@ -30,7 +30,7 @@
                 <!-- End::slide__category -->
 
                 <!-- Start::slide -->
-                <li class="slide">
+                <li class="slide {{ request()->is('dashboard') ? 'active open' : '' }} ">
                     <a href="{{ route('dashboard.index') }}" class="side-menu__item">
                         <span class="shape1"></span>
                         <span class="shape2"></span>
@@ -41,44 +41,58 @@
                 <!-- End::slide -->
 
                 <!-- Start::slide -->
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">
+                <li class="slide has-sub  {{ request()->is('user*', 'role*', 'permission*') ? 'active open' : '' }} ">
+                    <a href="javascript:void(0);" class="side-menu__item  ">
                         <span class="shape1"></span>
                         <span class="shape2"></span>
                         <i class="ti-user side-menu__icon"></i>
                         <span class="side-menu__label">User Management</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
-                    <ul class="slide-menu child1">
-                        <li class="slide side-menu__label1">
+                    <ul class="slide-menu child1 {{ request()->is('user*', 'role*', 'permission*') ? 'active' : '' }}">
+                        <li class="slide side-menu__label1 active">
                             <a href="javascript:void(0)">User Management</a>
                         </li>
                         <li class="slide">
-                            <a href="{{ route('user.index') }}" class="side-menu__item">User</a>
+                            <a href="{{ route('user.index') }}"
+                                class="side-menu__item {{ request()->is('user*') ? 'active' : '' }}">User</a>
                         </li>
                         <li class="slide">
-                            <a href="{{ route('role.index') }}" class="side-menu__item">Role</a>
+                            <a href="{{ route('role.index') }}"
+                                class="side-menu__item {{ request()->is('role*') ? 'active' : '' }}">Role</a>
                         </li>
                         <li class="slide">
-                            <a href="{{ route('permission.index') }}" class="side-menu__item">Permission
+                            <a href="{{ route('permission.index') }}"
+                                class="side-menu__item {{ request()->is('permission*') ? 'active' : '' }}">Permission
                             </a>
                         </li>
                     </ul>
-                <li class="slide">
-                    <a href="{{ route('branch.index') }}" class="side-menu__item">Branch
+                </li>
+                <li class="slide {{ request()->is('branch*') ? 'active open' : '' }} ">
+                    <a href="{{ route('branch.index') }}" class="side-menu__item">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti ti-smart-home side-menu__icon"></i>
+                        <span class="side-menu__label">Branch</span>
                     </a>
                 </li>
-                <li class="slide">
-                    <a href="{{ route('department.index') }}" class="side-menu__item">Department
+                <li class="slide {{ request()->is('department*') ? 'active open' : '' }} ">
+                    <a href="{{ route('department.index') }}" class="side-menu__item">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti ti-menu-2 side-menu__icon"></i>
+                        <span class="side-menu__label">Department</span>
                     </a>
                 </li>
-                <li class="slide">
-                    <a href="{{ route('module.index') }}" class="side-menu__item">Module
+                <li class="slide {{ request()->is('module*') ? 'active open' : '' }} ">
+                    <a href="{{ route('module.index') }}" class="side-menu__item">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti ti-menu-2 side-menu__icon"></i>
+                        <span class="side-menu__label">Module</span>
                     </a>
-                </li>
                 </li>
                 <!-- End::slide -->
-
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
                     width="24" height="24" viewBox="0 0 24 24">
