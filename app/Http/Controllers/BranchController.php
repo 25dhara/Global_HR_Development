@@ -11,6 +11,13 @@ use App\Http\Requests\UpdateBranchRequest;
 
 class BranchController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:branch-list|branch-create|branch-update|branch-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:branch-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:branch-update', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:branch-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */

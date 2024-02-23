@@ -10,6 +10,13 @@ use Yajra\DataTables\Facades\Datatables;
 
 class ModuleController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:module-list|module-create|module-update|module-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:module-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:module-update', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:module-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */
