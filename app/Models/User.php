@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Department;
 
 // use Spatie\Permission\Traits\HasRoles;
 
@@ -52,6 +53,10 @@ class User extends Authenticatable
     public function branch()
     {
         return $this->belongsTo(Branch::class);
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
     public function creator()
     {

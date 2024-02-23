@@ -20,11 +20,19 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = User::query();
-            return Datatables::eloquent($query)->make(true);
+            $users = User::with('branch', 'department')->get();
+            return Datatables::of($users)
+                ->addColumn('branch_name', function ($user) {
+                    return $user->branch ? $user->branch->name : '';
+                })
+                ->addColumn('department_name', function ($user) {
+                    return $user->department ? $user->department->name : '';
+                })
+                ->make(true);
         }
         return view('user.index');
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -62,10 +70,10 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $roles = Role::where('is_active',1)->get();
-        $branches = Branch::where('is_active',1)->get();
+        $roles = Role::where('is_active', 1)->get();
+        $branches = Branch::where('is_active', 1)->get();
         $departments = Department::all();
-        return view('user.edit', compact('user','roles','branches','departments'));
+        return view('user.edit', compact('user', 'roles', 'branches', 'departments'));
     }
     /**
      * Update the specified resource in storage.
@@ -100,5 +108,4 @@ class UserController extends Controller
         $departments = $branch->departments;
         return response()->json($departments);
     }
-
 }

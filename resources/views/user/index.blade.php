@@ -32,6 +32,8 @@
                                     <tr>
                                         <th class="wd-lg-8p"><span>Name</span></th>
                                         <th class="wd-lg-20p"><span>Email</span></th>
+                                        <th class="wd-lg-20p"><span>Branch</span></th>
+                                        <th class="wd-lg-20p"><span>Department</span></th>
                                         <th class="wd-lg-20p"><span>Is Active</span></th>
                                         <th class="wd-lg-20p">Password</th>
                                         <th class="wd-lg-20p">Action</th>
@@ -53,6 +55,14 @@
                                             {
                                                 data: 'email',
                                                 name: 'email'
+                                            },
+                                            {
+                                                data: 'branch_name',
+                                                name: 'branch_name'
+                                            },
+                                            {
+                                                data: 'department_name',
+                                                name: 'department_name'
                                             },
                                             {
                                                 data: 'is_active',
