@@ -32,6 +32,8 @@ class PermissionController extends Controller
                 ->make(true);
         }
 
+
+
         return view('permission.index');
     }
 
@@ -63,7 +65,7 @@ class PermissionController extends Controller
             return back()->withErrors([
                 'access' => 'Access already exits.'
             ]);
-        }else{
+        } else {
             Permission::create([
                 'module_id' => $request->module,
                 'name' => $name,
@@ -75,7 +77,6 @@ class PermissionController extends Controller
             return redirect()->route('permission.index')
                 ->with('success', 'Permission created successfully.');
         }
-
     }
 
     /**
@@ -114,7 +115,7 @@ class PermissionController extends Controller
             return back()->withErrors([
                 'access' => 'Access already exits.'
             ]);
-        }else{
+        } else {
 
             $permission->update([
                 'module_id' => $request->module,
