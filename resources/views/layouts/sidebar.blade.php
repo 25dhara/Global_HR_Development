@@ -3,11 +3,7 @@
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
         <a href="index.html" class="header-logo">
-            <img src="{{ asset('assets/images/brand-logos/desktop-white.png') }}" class="desktop-white" alt="logo">
-            <img src="{{ asset('assets/images/brand-logos/toggle-white.png') }}" class="toggle-white" alt="logo">
-            <img src="{{ asset('assets/images/brand-logos/desktop-logo.png') }}" class="desktop-logo" alt="logo">
-            <img src="{{ asset('assets/images/brand-logos/toggle-dark.png') }}" class="toggle-dark" alt="logo">
-            <img src="{{ asset('assets/images/brand-logos/toggle-logo.png') }}" class="toggle-logo" alt="logo">
+            <img src="{{ asset('assets/images/brand-logos/TKA.jpg') }}" class="toggle-dark" alt="logo">
             <img src="{{ asset('assets/images/brand-logos/logo.png') }}" class="desktop-dark" alt="logo">
         </a>
     </div>
