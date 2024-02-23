@@ -69,7 +69,7 @@
                                                         data);
 
                                                     return '<a href="' + editUrl +
-                                                        '" class="btn btn-sm btn-info"><i class="fe fe-edit-2"></i></a>' +
+                                                        '" class="btn btn-sm btn-info"><i class="fe fe-edit-2"></i></a> ' +
                                                         '<a href="#" class="btn btn-sm btn-danger delete-link" ' +
                                                         '   onclick="event.preventDefault(); document.getElementById(\'' +
                                                         deleteFormId + '\').submit();">' +

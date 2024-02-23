@@ -50,15 +50,28 @@
                                                 data: 'departments',
                                                 name: 'departments',
                                                 render: function(data, type, full, meta) {
-                                                    var departments = data.map(function(department) {
-                                                        return '<span class="badge bg-outline-primary rounded-pill">' +
+                                                     var departments = data.map(function(department) {
+                                                            return '<span class="badge bg-light-transparent text-dark">' +
                                                             department
-                                                            .name + '</span>';
-                                                    });
-
-                                                    return departments;
+                                                            .name + '</span><br>';
+                                                     });
+                                                    return departments.join('');
                                                 }
+
                                             },
+                                            // {
+                                            //     data: 'departments',
+                                            //     name: 'departments',
+                                            //     render: function(data, type, full, meta) {
+                                            //         var departments = '';
+                                            //         data.forEach(function(department) {
+                                            //             departments +=
+                                            //                 '' +
+                                            //                 department.name + '<br>';
+                                            //         });
+                                            //         return departments;
+                                            //     }
+                                            // },
 
                                             {
                                                 data: 'is_active',
@@ -85,7 +98,7 @@
                                                         data);
 
                                                     return '<a href="' + editUrl +
-                                                        '" class="btn btn-sm btn-info"><i class="fe fe-edit-2"></i></a>' +
+                                                        '" class="btn btn-sm btn-info"><i class="fe fe-edit-2"></i></a> ' +
                                                         '<a href="#" class="btn btn-sm btn-danger delete-link" ' +
                                                         '   onclick="event.preventDefault(); document.getElementById(\'' +
                                                         deleteFormId + '\').submit();">' +

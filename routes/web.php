@@ -37,8 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('module',          ModuleController::class);
     Route::resource('permission',      PermissionController::class);
 
-    Route::get('/departments/{branch}',        [UserController::class, 'getDepartments'])->name('departments.get');
-
-    Route::get('/user/{id}/reset-password', [UserController::class, 'resetPasswordForm'])->name('user.resetPasswordForm');
-    Route::post('/user/{id}/reset-password', [UserController::class, 'resetPassword'])->name('user.resetPassword');
+    Route::get('/departments/{branch}',         [UserController::class, 'getDepartments'])->name('departments.get');
+    Route::get('/user/{id}/reset-password',     [UserController::class, 'resetPasswordForm'])->name('user.resetPasswordForm');
+    Route::post('/user/{id}/reset-password',    [UserController::class, 'resetPassword'])->name('user.resetPassword');
 });
