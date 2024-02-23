@@ -25,7 +25,9 @@ class User extends Authenticatable
         'email',
         'is_active',
         'password',
-        'created_by'
+        'created_by',
+        'branch_id',
+        'department_id'
     ];
 
     /**

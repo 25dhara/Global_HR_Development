@@ -21,4 +21,8 @@ class Department extends Model
     {
         return $this->belongsTo(Branch::class, 'branch_id');
     }
+    public function branches()
+    {
+        return $this->belongsToMany(Branch::class, 'branch_department');
+    }
 }

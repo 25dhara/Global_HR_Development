@@ -35,4 +35,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('role',            RoleController::class);
     Route::resource('module',          ModuleController::class);
     Route::resource('permission',      PermissionController::class);
+
+    Route::get('/departments/{branch}',        [UserController::class, 'getDepartments'])->name('departments.get');
+
 });

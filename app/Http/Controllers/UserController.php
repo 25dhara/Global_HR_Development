@@ -10,6 +10,7 @@ use Yajra\DataTables\Facades\Datatables;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use App\Models\Branch;
+use App\Models\Department;
 
 class UserController extends Controller
 {
@@ -63,7 +64,8 @@ class UserController extends Controller
     {
         $roles = Role::where('is_active',1)->get();
         $branches = Branch::where('is_active',1)->get();
-        return view('user.edit', compact('user','roles','branches'));
+        $departments = Department::all();
+        return view('user.edit', compact('user','roles','branches','departments'));
     }
     /**
      * Update the specified resource in storage.
@@ -75,8 +77,8 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'is_active' => $is_active,
-            // 'branch_id' => $request->branch,
-            // 'department_id' => $request->department
+            'branch_id' => $request->branch,
+            'department_id' => $request->department
         ]);
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
         $user->assignRole($request->input('roles'));
@@ -92,4 +94,11 @@ class UserController extends Controller
         return redirect()->route('users.index')
             ->with('danger', 'User deleted successfully');
     }
+    public function getDepartments(Request $request, $branch)
+    {
+        $branch = Branch::findOrFail($branch);
+        $departments = $branch->departments;
+        return response()->json($departments);
+    }
+
 }

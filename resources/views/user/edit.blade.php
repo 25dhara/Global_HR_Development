@@ -44,29 +44,15 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="form-text" class="form-label fs-14 text-dark">Roles <span
-                                        class="text-danger">*</span></label>
-                                <select class="js-example-basic-multiple @error('roles') is-invalid @enderror"
-                                    name="roles[]" multiple="multiple">
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}"
-                                            {{ $user->roles && $user->roles->contains('id', $role->id) ? 'selected' : '' }}>
-                                            {{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('roles')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
                                 <label for="form-text" class="form-label fs-14 text-dark">Branch <span
                                         class="text-danger">*</span></label>
                                 <select
-                                    class="js-example-basic-single1 @error('name') is-invalid @enderror"aria-label="select example"
+                                    class="js-example-basic-single1 @error('branch') is-invalid @enderror"aria-label="select example"
                                     name="branch" id="branchSelect">
                                     <option value="">Branch</option>
                                     @foreach ($branches as $branch)
-                                        <option value="{{ $branch->id }}">
+                                        <option value="{{ $branch->id }}"
+                                            {{ $user->branch_id && $user->branch_id == $branch->id ? 'selected' : '' }}>
                                             {{ $branch->name }}</option>
                                     @endforeach
                                 </select>
@@ -81,6 +67,11 @@
                                     class="js-example-basic-single1 form-control @error('department') is-invalid @enderror"
                                     aria-label="select example" name="department">
                                     <option value="">Department</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}"
+                                            {{ $user->department_id == $department->id ? 'selected' : '' }}>
+                                            {{ $department->name }}</option>
+                                    @endforeach
                                 </select>
                                 @error('department')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -94,13 +85,65 @@
                             </div>
 
                             <button class="btn btn-primary" type="submit">Update</button>
-                        </form>
+
                     </div>
                 </div>
             </div>
+            <div class="row row-sm">
+                <div class="col-xl-12">
+                    <div class="card custom-card">
+                        <div class="card-header justify-content-between">
+                            <div class="card-title">
+                                Assign Role
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            @foreach ($roles as $role)
+                                <div class="form-check form-check-inline">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox"
+                                        {{ $user->roles && $user->roles->contains('id', $role->id) ? 'checked' : '' }}
+                                            name="roles[]" value="{{ $role->id }}" id="checkebox-sm">
+                                        <label class="form-check-label" for="checkebox-sm">
+                                            {{ $role->name }}
+                                        </label>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
         </div>
     </div>
 @endsection
 @push('child-scripts')
-
+    <script>
+        $(document).ready(function() {
+            $('#branchSelect').change(function() {
+                var branch_id = $(this).val();
+                if (branch_id) {
+                    $.ajax({
+                        url: '{{ route('departments.get', ':branch_id') }}'.replace(':branch_id',
+                            branch_id),
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            $('#departmentSelect').empty();
+                            $('#departmentSelect').append(
+                                '<option value="">Department</option>');
+                            $.each(data, function(key, value) {
+                                $('#departmentSelect').append('<option value="' + value
+                                    .id + '">' + value.name + '</option>');
+                            });
+                        }
+                    });
+                } else {
+                    $('#departmentSelect').empty();
+                    $('#departmentSelect').append('<option value="">Department</option>');
+                }
+            });
+        });
+    </script>
 @endpush
