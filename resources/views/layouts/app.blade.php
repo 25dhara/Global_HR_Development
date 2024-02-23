@@ -75,13 +75,13 @@
         <div class="main-content app-content">
             <div class="mt-3">
             @if (session()->has('success'))
-                <div class="alert alert-solid-success alert-dismissible fade show"> {{ session('success') }}
+                <div class="alert alert-solid-success alert-dismissible fade show" id="success-alert"> {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
                             class="bi bi-x"></i></button>
                 </div>
             @endif
             @if (session()->has('danger'))
-                <div class="alert alert-solid-danger alert-dismissible fade show"> {{ session('danger') }}
+                <div class="alert alert-solid-danger alert-dismissible fade show"  id="danger-alert"> {{ session('danger') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
                             class="bi bi-x"></i></button>
                 </div>
@@ -173,6 +173,21 @@
     <!-- Sweetalerts JS -->
     <script src="{{ asset('assets/libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('assets/js/sweet-alerts.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                let successAlert = document.getElementById('success-alert');
+                if (successAlert) {
+                    successAlert.classList.add('d-none');
+                }
+
+                let dangerAlert = document.getElementById('danger-alert');
+                if (dangerAlert) {
+                    dangerAlert.classList.add('d-none');
+                }
+            }, 5000);
+        });
+    </script>
 
 </body>
 
