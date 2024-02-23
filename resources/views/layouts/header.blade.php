@@ -8,27 +8,6 @@
 
             <!-- Start::header-element -->
             <div class="header-element">
-                <div class="horizontal-logo">
-                    <a href="index.html" class="header-logo">
-                        <img src="{{ asset('assets/images/brand-logos/desktop-logo.png') }}" alt="logo"
-                            class="desktop-logo') }}">
-                        <img src="{{ asset('assets/images/brand-logos/toggle-logo.png') }}" alt="logo"
-                            class="toggle-logo') }}">
-                        <img src="{{ asset('assets/images/brand-logos/desktop-dark.png') }}" alt="logo"
-                            class="desktop-dark') }}">
-                        <img src="{{ asset('assets/images/brand-logos/toggle-dark.png') }}" alt="logo"
-                            class="toggle-dark') }}">
-                        <img src="{{ asset('assets/images/brand-logos/desktop-white.png') }}" alt="logo"
-                            class="desktop-white') }}">
-                        <img src="{{ asset('assets/images/brand-logos/toggle-white.png') }}" alt="logo"
-                            class="toggle-white') }}">
-                    </a>
-                </div>
-            </div>
-            <!-- End::header-element -->
-
-            <!-- Start::header-element -->
-            <div class="header-element">
                 <!-- Start::header-link -->
                 <a aria-label="Hide Sidebar"
                     class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle"
@@ -42,24 +21,7 @@
         <!-- Start::header-content-right -->
         <div class="header-content-right">
 
-            <!-- Start::header-element -->
-            <div class="header-element header-theme-mode">
-                <!-- Start::header-link|layout-setting -->
-                <a href="javascript:void(0);" class="header-link layout-setting">
-                    <span class="light-layout">
-                        <!-- Start::header-link-icon -->
-                        <i class="fe fe-moon header-link-icon lh-2"></i>
-                        <!-- End::header-link-icon -->
-                    </span>
-                    <span class="dark-layout">
-                        <!-- Start::header-link-icon -->
-                        <i class="fe fe-sun header-link-icon lh-2"></i>
-                        <!-- End::header-link-icon -->
-                    </span>
-                </a>
-                <!-- End::header-link|layout-setting -->
-            </div>
-            <!-- End::header-element -->
+
 
             <!-- Start::header-element -->
             <div class="header-element">
@@ -104,20 +66,4 @@
     </div>
     <!-- End::main-header-container -->
 
-    {{-- <div class="card custom-card">
-        @if (session()->has('success'))
-            <div class="alert alert-outline-success alert-dismissible fade show" role="alert">
-                {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-        @if (session()->has('danger'))
-            <div class="alert alert-outline-danger alert-dismissible fade show" role="alert">
-                {{ session('danger') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
-    </div> --}}
-  
 </header>
-
