@@ -16,6 +16,13 @@ use Yajra\DataTables\Facades\Datatables;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:user-list|user-insert|user-update|user-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:user-insert', ['only' => ['insert', 'store']]);
+        $this->middleware('permission:user-update', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */

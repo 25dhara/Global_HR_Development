@@ -49,13 +49,13 @@
                                 <select class="form-select @error('access') is-invalid @enderror"aria-label="select example"
                                     name="access">
                                     <option value ="">Select Access</option>
-                                    <option value="insert" {{ $selectedValue === 'insert' ? 'selected' : '' }}>
-                                        insert</option>
+                                    <option value="create" {{ $selectedValue === 'create' ? 'selected' : '' }}>
+                                        Create</option>
                                     <option value="update" {{ $selectedValue === 'update' ? 'selected' : '' }}>
-                                        update</option>
+                                        Update</option>
                                     <option value="delete" {{ $selectedValue === 'delete' ? 'selected' : '' }}>
-                                        delete</option>
-                                    <option value="view" {{ $selectedValue === 'view' ? 'selected' : '' }}>view
+                                        Delete</option>
+                                    <option value="view" {{ $selectedValue === 'view' ? 'selected' : '' }}>View
                                     </option>
                                 </select>
                                 @error('access')
