@@ -25,10 +25,6 @@
                 </svg>
             </div>
             <ul class="main-menu">
-                <!-- Start::slide__category -->
-                <li class="slide__category"><span class="category-name">Dashboard</span></li>
-                <!-- End::slide__category -->
-
                 <!-- Start::slide -->
                 <li class="slide {{ request()->is('dashboard') ? 'active open' : '' }} ">
                     <a href="{{ route('dashboard.index') }}" class="side-menu__item">

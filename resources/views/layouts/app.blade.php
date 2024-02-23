@@ -63,13 +63,6 @@
 </head>
 
 <body>
-
-    <!-- Loader -->
-    {{-- <div id="loader">
-        <img src="{{ asset('assets/images/media/media-79.svg') }}" alt="">
-    </div> --}}
-    <!-- Loader -->
-
     <div class="page">
         <!-- app-header -->
         @include('layouts.header')
@@ -80,6 +73,7 @@
         <!-- End::app-sidebar -->
         <!-- Start::app-content -->
         <div class="main-content app-content">
+            <div class="mt-3">
             @if (session()->has('success'))
                 <div class="alert alert-solid-success alert-dismissible fade show"> {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"><i
@@ -92,6 +86,7 @@
                             class="bi bi-x"></i></button>
                 </div>
             @endif
+            </div>
             @yield('content')
         </div>
         <!-- End::app-content -->
@@ -99,9 +94,9 @@
         <footer class="footer mt-auto py-3 bg-white text-center">
             <div class="container">
                 <span class="text-muted"> Copyright © <span id="year"></span> <a href="javascript:void(0);"
-                        class="text-dark fw-semibold">Spruha</a>.
+                        class="text-dark fw-semibold">tka</a>.
                     Designed with <span class="bi bi-heart-fill text-danger"></span> by <a href="javascript:void(0);">
-                        <span class="fw-semibold text-primary text-decoration-underline">Spruko</span>
+                        <span class="fw-semibold text-primary text-decoration-underline">tka</span>
                     </a> All
                     rights
                     reserved
@@ -139,7 +134,6 @@
     <!-- Color Picker JS -->
     <script src="{{ asset('assets/libs/@simonwep/pickr/pickr.es5.min.js') }}"></script>
 
-
     <!-- JSVector Maps JS -->
     <script src="{{ asset('assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
 
@@ -169,6 +163,7 @@
     <!-- Datatables Cdn -->
     <script src="{{ asset('assets/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/dataTables.bootstrap5.min.js') }}"></script>
+
     <!-- Select2 Cdn -->
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
 
