@@ -1,21 +1,16 @@
 @extends('layouts.app')
-@section('content')
-    <!-- Content Wrapper. Contains page content -->
 
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+@section('content')
+    <!-- Start::app-content -->
+    <div class="container-fluid">
+        <!-- Page Header -->
+        <div class="d-md-flex d-block align-items-center justify-content-between page-header-breadcrumb">
+            <div>
+                <h2 class="main-content-title fs-24 mb-1">Dashboard</h2>
+
+            </div>
+        </div>
+
     </div>
+    <!-- End::app-content -->
 @endsection
