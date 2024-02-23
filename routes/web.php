@@ -26,6 +26,7 @@ Route::get('/login',        [AuthController::class, 'index'])->name('login');
 Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
 Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
 
+
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard',     [HomeController::class, 'index'])->name('dashboard.index');
 
@@ -38,4 +39,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/departments/{branch}',        [UserController::class, 'getDepartments'])->name('departments.get');
 
+    Route::get('/user/{id}/reset-password', [UserController::class, 'resetPasswordForm'])->name('user.resetPasswordForm');
+    Route::post('/user/{id}/reset-password', [UserController::class, 'resetPassword'])->name('user.resetPassword');
 });

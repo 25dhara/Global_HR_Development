@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
-use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\Datatables;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\DB;
 use App\Models\Branch;
 use App\Models\Department;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdatePasswordRequest;
+use App\Http\Requests\UpdateUserRequest;
+use Yajra\DataTables\Facades\Datatables;
 
 class UserController extends Controller
 {
@@ -72,21 +74,10 @@ class UserController extends Controller
         ]);
         return redirect()->route('user.index');
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        //
-    }
+
     /**
      * Show the form for editing the specified resource.
      */
-
-    /**
-     * Update the specified resource in storage.
-     */
-
     public function edit(User $user)
     {
         $roles = Role::where('is_active', 1)->get();
@@ -118,13 +109,31 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('danger', 'User deleted successfully');
     }
+
     public function getDepartments(Request $request, $branch)
     {
         $branch = Branch::findOrFail($branch);
         $departments = $branch->departments;
         return response()->json($departments);
+    }
+
+    public function resetPasswordForm($id)
+    {
+        $user = User::find($id);
+        return view('user.passwordResetForm', compact('user'));
+    }
+
+    public function resetPassword(UpdatePasswordRequest $request, $id)
+    {
+        $user = User::find($id);
+        if (!Hash::check($request->old_password, $user->password)) {
+            return redirect()->back()->withErrors(['old_password' => 'The old password is incorrect.']);
+        }
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('user.index')->with('success', 'Password reset successfully!');
     }
 }
