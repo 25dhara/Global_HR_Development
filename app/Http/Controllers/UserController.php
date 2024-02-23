@@ -19,8 +19,27 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        $branches = Branch::where('is_active', 1)->get();
+        $departments = Department::all();
         if ($request->ajax()) {
-            $users = User::with('branch', 'department')->get();
+            $usersQuery = User::with('branch', 'department');
+
+            $branchId = $request->branch_id;
+            $departmentId = $request->department_id;
+            if ($branchId) {
+                $usersQuery->whereHas('branch', function ($query) use ($branchId) {
+                    $query->where('id', $branchId);
+                });
+            }
+
+            if ($departmentId) {
+                $usersQuery->whereHas('department', function ($query) use ($departmentId) {
+                    $query->where('id', $departmentId);
+                });
+            }
+
+            $users = $usersQuery->get();
+
             return Datatables::of($users)
                 ->addColumn('branch_name', function ($user) {
                     return $user->branch ? $user->branch->name : '';
@@ -30,7 +49,7 @@ class UserController extends Controller
                 })
                 ->make(true);
         }
-        return view('user.index');
+        return view('user.index', compact('branches', 'departments'));
     }
 
     /**
