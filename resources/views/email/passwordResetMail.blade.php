@@ -119,7 +119,11 @@
               <!-- COPY -->
               <tr>
                 <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
-                  <p style="margin: 0;">Dear {{$name}}, <br>your account on GLOBAL HR is ready.  You need to reset your own personal password.  Resetting your password is easy. Just press the button below and follow the instructions. We'll have you up and running in no time.</p>
+                  <p style="margin: 0;">Dear {{$name}}, <br>your account on GLOBAL HR is ready.
+                    To login, please see your details below:<br><br>
+                    your email :{{$email}}<br>
+                    Your password: {{$password}}<br>
+                     You want  to reset your own personal password.  Resetting your password is easy. Just press the button below and follow the instructions. We'll have you up and running in no time.</p>
                 </td>
               </tr>
               <!-- BULLETPROOF BUTTON -->
@@ -130,7 +134,7 @@
                       <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                         <table border="0" cellspacing="0" cellpadding="0">
                           <tr>
-                              <td align="center" style="border-radius: 3px;" bgcolor="#7c72dc"><a href="https://pifs.lts.com.fj/wp-login.php?action=lostpassword&user_login=pc@hh.com" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #7c72dc; display: inline-block;">Reset Password</a></td>
+                              <td align="center" style="border-radius: 3px;" bgcolor="#7c72dc"><a href="https://pifs.lts.com.fj/wp-login.php?action=lostpassword&user_login=pc@hh.com" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #e1e6f1;; text-decoration: none; color: #e1e6f1;; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #7c72dc; display: inline-block;">Reset Password</a></td>
                           </tr>
                         </table>
                       </td>
