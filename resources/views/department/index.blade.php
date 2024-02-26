@@ -49,10 +49,10 @@
                                                 name: 'is_active',
                                                 render: function(data, type, full, meta) {
                                                     if (data) {
-                                                        return '<i class="fas fa-toggle-on text-primary is_active" data-activestatus="' +
+                                                        return '<i class="bi bi-check-circle-fill text-success is_active" data-activestatus="' +
                                                             0 + '" data-val="' + full.id + '"></i>';
                                                     } else {
-                                                        return '<i class="fas fa-toggle-on text-secondary is_active" data-activestatus="' +
+                                                        return '<i class="bi bi-x-circle-fill text-danger is_active" data-activestatus="' +
                                                             1 + '" data-val="' + full.id + '"></i>';
                                                     }
                                                 }

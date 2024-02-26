@@ -71,12 +71,6 @@ class RoleController extends Controller
 
         $is_active = $request->is_active == "on" ? 1 : 0;
         $role->update(['name' => $request->name, 'description' => $request->description, 'is_active' => $is_active]);
-
-        if ($request->permissions) {
-            $selectedPermissions = $request->input('permissions', []);
-            $role->syncPermissions($selectedPermissions);
-        }
-
         return redirect()->route('role.index');
     }
 
@@ -87,5 +81,14 @@ class RoleController extends Controller
     {
         $role->delete();
          return redirect()->route('role.index');
+    }
+    public function asign_permission(Request $request, $id){
+        $role = Role::find($id);
+        if ($request->permissions) {
+            $selectedPermissions = $request->input('permissions', []);
+            $role->syncPermissions($selectedPermissions);
+        }
+        return redirect()->route('role.index');
+
     }
 }

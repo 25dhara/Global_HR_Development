@@ -47,11 +47,12 @@
                                 @enderror
                             </div>
                             <div class="form-check form-switch mb-2">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
-                                    checked="" name="is_active">
+                                <input class="form-check-input" type="checkbox" role="switch" id="switch-primary" {{ $role->is_active == 1 ? 'checked' : '' }}
+                                     name="is_active">
                                 <label class="form-check-label" for="switch-primary">Active</label>
                             </div>
                             <button class="btn btn-primary" type="submit">Update</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -65,6 +66,9 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <form method="POST" action="{{ route('role.assignpermission',$role->id) }}">
+                            @csrf
+                            @method('PUT')
                         @foreach ($modulesWithPermissions as $module)
                             <div class="toast fade show mt-2 col-12" role="alert" aria-live="assertive" aria-atomic="true"
                                 style="width: auto">
@@ -88,10 +92,12 @@
                                 </div>
                             </div>
                         @endforeach
+                        <button class="btn btn-primary mt-2" type="submit">Update</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        </form>
+
     </div>
 @endsection
