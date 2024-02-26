@@ -9,7 +9,10 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $branches = Branch::where('is_active',1)->withCount('users')->get();
-        return view('dashboard.index', compact('branches'));
+        $name = 'ankita';
+        $password  ='ghjfhk';
+        return view('email.passwordResetMail',compact('name','password'));
+        // $branches = Branch::where('is_active',1)->withCount('users')->get();
+        // return view('dashboard.index', compact('branches'));
     }
 }
