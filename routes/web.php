@@ -40,4 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/departments/{branch}',         [UserController::class, 'getDepartments'])->name('departments.get');
     Route::get('/user/{id}/reset-password',     [UserController::class, 'resetPasswordForm'])->name('user.resetPasswordForm');
     Route::post('/user/{id}/reset-password',    [UserController::class, 'resetPassword'])->name('user.resetPassword');
+
+    Route::put('/assignpermission/{id}',    [RoleController::class, 'asign_permission'])->name('role.assignpermission');
 });

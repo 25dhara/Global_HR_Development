@@ -75,7 +75,6 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        die;
         $is_active = $request->is_active == "on" ? 1 : 0;
         $department->update([
             'name' => $request->name,
