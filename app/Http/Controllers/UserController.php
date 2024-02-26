@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Branch;
 use App\Models\Department;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\PasswordResetMail;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdatePasswordRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Yajra\DataTables\Facades\Datatables;
+use App\Http\Requests\UpdatePasswordRequest;
 
 class UserController extends Controller
 {
@@ -73,12 +76,15 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        User::create([
+        $password = Str::random(10);
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Hash::make($password),
             'created_by' => 1
         ]);
+        // Mail::to($user->email)->send(new PasswordResetMail($password));
+        Mail::to($user->email)->send(new PasswordResetMail($user->name, $password));
         return redirect()->route('user.index');
     }
 

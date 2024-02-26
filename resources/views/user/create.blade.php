@@ -45,7 +45,7 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="form-password" class="form-label fs-14 text-dark">
                                     Password<span class="text-danger">*</span></label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
@@ -68,7 +68,7 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <button class="btn btn-primary" type="submit">Create</button>
                         </form>
                     </div>
