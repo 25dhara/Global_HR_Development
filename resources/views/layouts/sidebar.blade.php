@@ -92,8 +92,6 @@
                 </svg></div>
         </nav>
         <!-- End::nav -->
-
     </div>
     <!-- End::main-sidebar -->
-
 </aside>
