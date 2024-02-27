@@ -22,25 +22,11 @@ class AuthController extends Controller
     {
         return view('auth.reset_password', compact('token'));
     }
-    // public function customLogin(LoginRequest $request)
-    // {
-    //     $credentials = $request->only('email', 'password');
-    //     // print_r($credentials);
-    //     // die;
-
-    //     if (Auth::attempt($credentials)) {
-    //         Auth::logoutOtherDevices($request->input('password'));
-    //         return redirect()->route('dashboard.index')->withSuccess('Signed in successfully');
-    //     } else {
-    //         return redirect("login")->with('error', 'Login details are not valid');
-    //     }
-    // }
     public function customLogin(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Ensure user is authenticated
             if (Auth::check()) {
                 $userId = Auth::id();
                 $user = User::find($userId);
@@ -50,7 +36,6 @@ class AuthController extends Controller
                 Auth::logoutOtherDevices($request->input('password'));
                 return redirect()->route('dashboard.index')->withSuccess('Signed in successfully');
             } else {
-                // Handle case where Auth::user() returns null
                 return redirect("login")->with('error', 'User not found');
             }
         } else {
@@ -67,8 +52,6 @@ class AuthController extends Controller
     public function resetPassword(UpdatePasswordRequest $request, $token)
     {
         $user = User::where('reset_token', $token)->first();
-
-
         if (!$user) {
             return redirect()->back()->withErrors(['reset_token' => 'Invalid reset token.']);
         }

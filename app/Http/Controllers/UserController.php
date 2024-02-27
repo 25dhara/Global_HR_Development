@@ -87,7 +87,6 @@ class UserController extends Controller
             'created_by' => Auth::id(),
             'reset_token' => $token
         ]);
-        // Mail::to($user->email)->send(new PasswordResetMail($password));
         $resetUrl = route('reset.password', ['token' => $token]);
         Mail::to($user->email)->send(new PasswordResetMail($user->name, $user->email, $password, $resetUrl));
         return redirect()->route('user.index');

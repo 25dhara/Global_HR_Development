@@ -40,7 +40,7 @@ class RoleController extends Controller
         Role::create([
             'name' => $request->name,
             'description'=> $request->description,
-            // 'guard_name'=>'web',
+            'guard_name'=>'web',
             'is_active' => $is_active,
         ]);
         return redirect()->route('role.index');

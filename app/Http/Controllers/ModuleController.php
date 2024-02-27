@@ -48,7 +48,6 @@ class ModuleController extends Controller
             'is_active' => $is_active,
         ]);
         return redirect()->route('module.index')->with('success', 'Module created successfully');
-        // return redirect()->route('module.index')->with('success', 'Module updated successfully');
     }
 
     /**
