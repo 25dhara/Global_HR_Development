@@ -21,14 +21,16 @@ use App\Http\Controllers\PermissionController;
 |
 */
 
-Route::get('/',             [AuthController::class, 'index'])->name('login');
-Route::get('/login',        [AuthController::class, 'index'])->name('login');
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
-Route::post('logout',       [AuthController::class, 'logout'])->name('logout');
-
+Route::get('/',                         [AuthController::class, 'index'])->name('login');
+Route::get('/login',                    [AuthController::class, 'index'])->name('login');
+Route::post('custom-login',             [AuthController::class, 'customLogin'])->name('login.custom');
+Route::post('logout',                   [AuthController::class, 'logout'])->name('logout');
+Route::get('/reset-password/{token}',   [AuthController::class, 'showResetPasswordForm'])->name('reset.password');
+Route::post('/reset-password/{token}',  [AuthController::class, 'resetPassword'])->name('resetPassword');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('dashboard',     [HomeController::class, 'index'])->name('dashboard.index');
+
+    Route::get('dashboard',            [HomeController::class, 'index'])->name('dashboard.index');
 
     Route::resource('user',            UserController::class);
     Route::resource('branch',          BranchController::class);

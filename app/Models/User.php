@@ -28,7 +28,8 @@ class User extends Authenticatable
         'password',
         'created_by',
         'branch_id',
-        'department_id'
+        'department_id',
+        'reset_token'
     ];
 
     /**

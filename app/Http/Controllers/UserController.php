@@ -77,14 +77,17 @@ class UserController extends Controller
     public function store(StoreUserRequest $request)
     {
         $password = Str::random(10);
+        $token = Str::random(40);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($password),
-            'created_by' => 1
+            'created_by' => 1,
+            'reset_token'=> $token
         ]);
         // Mail::to($user->email)->send(new PasswordResetMail($password));
-        Mail::to($user->email)->send(new PasswordResetMail($user->name, $password));
+        $resetUrl = route('reset.password', ['token' => $token]);
+        Mail::to($user->email)->send(new PasswordResetMail($user->name, $user->email, $password, $resetUrl));
         return redirect()->route('user.index');
     }
 
