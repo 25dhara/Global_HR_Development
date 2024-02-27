@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
@@ -21,19 +22,42 @@ class AuthController extends Controller
     {
         return view('auth.reset_password', compact('token'));
     }
+    // public function customLogin(LoginRequest $request)
+    // {
+    //     $credentials = $request->only('email', 'password');
+    //     // print_r($credentials);
+    //     // die;
+
+    //     if (Auth::attempt($credentials)) {
+    //         Auth::logoutOtherDevices($request->input('password'));
+    //         return redirect()->route('dashboard.index')->withSuccess('Signed in successfully');
+    //     } else {
+    //         return redirect("login")->with('error', 'Login details are not valid');
+    //     }
+    // }
     public function customLogin(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
-        // print_r($credentials);
-        // die;
 
         if (Auth::attempt($credentials)) {
-            Auth::logoutOtherDevices($request->input('password'));
-            return redirect()->route('dashboard.index')->withSuccess('Signed in successfully');
+            // Ensure user is authenticated
+            if (Auth::check()) {
+                $userId = Auth::id();
+                $user = User::find($userId);
+                $user->last_login_at = Carbon::now();
+                $user->save();
+
+                Auth::logoutOtherDevices($request->input('password'));
+                return redirect()->route('dashboard.index')->withSuccess('Signed in successfully');
+            } else {
+                // Handle case where Auth::user() returns null
+                return redirect("login")->with('error', 'User not found');
+            }
         } else {
             return redirect("login")->with('error', 'Login details are not valid');
         }
     }
+
     public function logout()
     {
         Session::flush();
@@ -56,6 +80,7 @@ class AuthController extends Controller
         }
         $user->password = Hash::make($request->password);
         $user->reset_token = null;
+        $user->password_changed_at = Carbon::now();
         $user->save();
         $credentials = ['email' => $user->email, 'password' =>  $request->password];
 

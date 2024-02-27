@@ -66,7 +66,7 @@ class PermissionController extends Controller
             Permission::create([
                 'module_id' => $request->module,
                 'name' => $name,
-                 'guard_name' => 'web',
+                'guard_name' => 'web',
                 'description' => $request->description,
                 'is_active' => $is_active,
             ]);

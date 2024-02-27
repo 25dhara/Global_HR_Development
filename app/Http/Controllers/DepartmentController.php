@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Department;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\Datatables;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
-use App\Models\Branch;
-use Yajra\DataTables\Facades\Datatables;
-use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
 {
@@ -48,7 +49,7 @@ class DepartmentController extends Controller
         Department::create([
             'name' => $request->name,
             'is_active' => $is_active,
-            'created_by' => 1
+            'created_by' => Auth::id()
         ]);
         return redirect()->route('department.index')->with('success', 'Department created successfully');
     }

@@ -542,49 +542,6 @@
                                 <div class="row row-sm">
                                     <div class="card-body mt-2 mb-2">
                                         <div class="clearfix"></div>
-                                        {{-- <form method="post" action="{{ route('login.custom') }}">
-                                            @csrf
-                                            <h5 class="text-start mb-2">Reset your Password</h5>
-                                            @if (session('error'))
-                                                <div class="alert alert-danger">
-                                                    {{ session('error') }}
-                                                </div>
-                                            @endif
-                                            @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
-                                            <p class="mb-4 text-muted fs-13 ms-0 text-start"></p>
-                                            <div class="form-group text-start">
-                                                <label class="form-label">Email</label>
-                                                <input class="form-control @error('email') is-invalid @enderror"
-                                                    placeholder="Email" type="email" value="{{ old('email') }}"
-                                                    name="email">
-                                                @error('email')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group text-start">
-                                                <label class="form-label">Password</label>
-                                                <input class="form-control @error('password') is-invalid @enderror"
-                                                    placeholder="Password" type="password" name="password">
-                                                @error('password')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                            <div class="d-grid">
-                                                <button type="submit" class="btn btn-primary">Sign In</button>
-                                            </div>
-                                        </form> --}}
                                         <form method="POST" action="{{ route('reset.password', $token) }}">
                                             @csrf
                                             <div class="mb-3">
@@ -599,6 +556,7 @@
                                                     </div>
                                                 @enderror
                                             </div>
+
                                             <div class="mb-3">
                                                 <label for="password" class="form-label fs-14 text-dark">New
                                                     Password<span class="text-danger">*</span></label>
@@ -617,8 +575,7 @@
                                                         class="text-danger">*</span></label>
                                                 <input type="password"
                                                     class="form-control @error('password_confirmation') is-invalid @enderror"
-                                                    id="password_confirmation" placeholder="Confirm Password"
-                                                    name="password_confirmation">
+                                                    id="password_confirmation" name="password_confirmation">
                                                 @error('password_confirmation')
                                                     <div class="invalid-feedback">
                                                         {{ $message }}
@@ -627,10 +584,6 @@
                                             </div>
                                             <button class="btn btn-primary" type="submit">Reset Password</button>
                                         </form>
-                                        {{-- <div class="text-start mt-5 ms-0">
-                                            <div class="mb-1"><a href="forgot.html">Forgot password?</a></div>
-                                            <div>Don't have an account? <a href="signup.html">Register Here</a></div>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

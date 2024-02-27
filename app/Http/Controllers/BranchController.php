@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\Datatables;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BranchController extends Controller
 {
@@ -48,7 +49,7 @@ class BranchController extends Controller
         Branch::create([
             'name' => $request->name,
             'is_active' => $is_active,
-            'created_by' => 1
+            'created_by' => Auth::id()
         ]);
         return redirect()->route('branch.index')->with('success', 'Branch created successfully');
     }

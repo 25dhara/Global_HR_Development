@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Branch;
 use App\Models\Department;
@@ -16,16 +17,17 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Yajra\DataTables\Facades\Datatables;
 use App\Http\Requests\UpdatePasswordRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:user-list|user-create|user-update|user-delete', ['only' => ['index', 'store']]);
-        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:user-update', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:user-list|user-create|user-update|user-delete', ['only' => ['index', 'store']]);
+    //     $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+    //     $this->middleware('permission:user-update', ['only' => ['edit', 'update']]);
+    //     $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    // }
     /**
      * Display a listing of the resource.
      */
@@ -82,8 +84,8 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($password),
-            'created_by' => 1,
-            'reset_token'=> $token
+            'created_by' => Auth::id(),
+            'reset_token' => $token
         ]);
         // Mail::to($user->email)->send(new PasswordResetMail($password));
         $resetUrl = route('reset.password', ['token' => $token]);
@@ -149,6 +151,7 @@ class UserController extends Controller
             return redirect()->back()->withErrors(['old_password' => 'The old password is incorrect.']);
         }
         $user->password = Hash::make($request->password);
+        $user->password_changed_at = Carbon::now();
         $user->save();
         return redirect()->route('user.index')->with('success', 'Password reset successfully!');
     }
