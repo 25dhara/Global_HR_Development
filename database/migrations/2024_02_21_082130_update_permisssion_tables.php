@@ -24,16 +24,16 @@ return new class extends Migration
 
         // Add fields to the permissions table
         Schema::table($tableNames['permissions'], function (Blueprint $table) {
-            $table->text('description')->nullable();
-            $table->integer('module_id');
-            $table->boolean('is_active')->default(1);
+            $table->text('description')->nullable()->after('name');
+            $table->integer('module_id')->after('description');
+            $table->boolean('is_active')->default(1)->after('module_id');;
             $table->softDeletes();
         });
 
         // Add fields to the roles table
         Schema::table($tableNames['roles'], function (Blueprint $table) {
-            $table->text('description')->nullable();
-            $table->boolean('is_active')->default(1);
+            $table->text('description')->nullable()->after('name');;
+            $table->boolean('is_active')->default(1)->after('description');;
             $table->softDeletes();
         });
     }

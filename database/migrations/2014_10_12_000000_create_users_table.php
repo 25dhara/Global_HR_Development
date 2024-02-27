@@ -18,8 +18,14 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->unsignedBigInteger('created_by');
             $table->boolean('is_active')->default(1);
+            $table->unsignedBigInteger('branch_id')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
+            $table->string('timezone')->default('UTC');
+            $table->string('reset_token', 80)->unique()->nullable() ->default(null);
+            $table->timestamp('last_login_at')->nullable();
+            $table->timestamp('password_changed_at')->nullable();
+            $table->unsignedBigInteger('created_by');
             $table->timestamps();
             $table->softDeletes();
         });
