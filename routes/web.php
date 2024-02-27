@@ -27,12 +27,12 @@ Route::post('custom-login',             [AuthController::class, 'customLogin'])-
 Route::post('logout',                   [AuthController::class, 'logout'])->name('logout');
 Route::get('/reset-password/{token}',   [AuthController::class, 'showResetPasswordForm'])->name('reset.password');
 Route::post('/reset-password/{token}',  [AuthController::class, 'resetPassword'])->name('resetPassword');
-Route::resource('user',            UserController::class);
 
 Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard',            [HomeController::class, 'index'])->name('dashboard.index');
 
+    Route::resource('user',            UserController::class);
     Route::resource('branch',          BranchController::class);
     Route::resource('department',      DepartmentController::class);
     Route::resource('role',            RoleController::class);
