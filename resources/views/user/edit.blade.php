@@ -49,7 +49,7 @@
                                 <select
                                     class="js-example-basic-single1 @error('branch') is-invalid @enderror"aria-label="select example"
                                     name="branch" id="branchSelect">
-                                    <option value="">Branch</option>
+                                    <option value="">Select Branch</option>
                                     @foreach ($branches as $branch)
                                         <option value="{{ $branch->id }}"
                                             {{ $user->branch_id && $user->branch_id == $branch->id ? 'selected' : '' }}>
@@ -66,7 +66,7 @@
                                 <select id="departmentSelect"
                                     class="js-example-basic-single1 form-control @error('department') is-invalid @enderror"
                                     aria-label="select example" name="department">
-                                    <option value="">Department</option>
+                                    <option value="">Select Department</option>
                                     @foreach ($departments as $department)
                                         <option value="{{ $department->id }}"
                                             {{ $user->department_id == $department->id ? 'selected' : '' }}>
