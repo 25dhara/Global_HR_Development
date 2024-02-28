@@ -115,6 +115,10 @@ class UserController extends Controller
             'branch_id' => $request->branch,
             'department_id' => $request->department
         ]);
+        $selectedBranch = Branch::find($request->branch);
+        $user->update([
+            'timezone' => $selectedBranch->timezone
+        ]);
         DB::table('model_has_roles')->where('model_id', $user->id)->delete();
         $user->assignRole($request->input('roles'));
         return redirect()->route('user.index')->with('success', 'User updated successfully');
@@ -151,6 +155,7 @@ class UserController extends Controller
         }
         $user->password = Hash::make($request->password);
         $user->password_changed_at = Carbon::now();
+        $user->reset_token = null;
         $user->save();
         return redirect()->route('user.index')->with('success', 'Password reset successfully!');
     }

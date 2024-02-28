@@ -27,6 +27,8 @@
                                 <thead>
                                     <tr>
                                         <th class="wd-lg-8p"><span>Branch</span></th>
+                                        <th class="wd-lg-8p"><span>Timezone</span></th>
+                                        <th class="wd-lg-8p"><span>PrefixCode</span></th>
                                         <th class="wd-lg-8p"><span>Departments</span></th>
                                         <th class="wd-lg-20p"><span>Is Active</span></th>
                                         <th class="wd-lg-20p">Action</th>
@@ -47,14 +49,22 @@
                                                 name: 'name'
                                             },
                                             {
+                                                data: 'timezone',
+                                                name: 'timezone'
+                                            },
+                                            {
+                                                data: 'prefix_code',
+                                                name: 'prefix_code'
+                                            },
+                                            {
                                                 data: 'departments',
                                                 name: 'departments',
                                                 render: function(data, type, full, meta) {
-                                                     var departments = data.map(function(department) {
-                                                            return '<span class="badge bg-light-transparent text-dark">' +
+                                                    var departments = data.map(function(department) {
+                                                        return '<span class="badge bg-light-transparent text-dark">' +
                                                             department
                                                             .name + '</span><br>';
-                                                     });
+                                                    });
                                                     return departments.join('');
                                                 }
 

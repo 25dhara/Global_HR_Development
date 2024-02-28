@@ -32,6 +32,31 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div class="mb-3">
+                                <label for="time_zone" class="form-label fs-14 text-dark">Timezone</label>
+                                <select class="js-example-basic-single1 @error('access') is-invalid @enderror" id="timezone"
+                                    name="timezone">
+                                    @foreach ($timezones as $timezone)
+                                        <option value="{{ $timezone }}">{{ $timezone }}</option>
+                                    @endforeach
+                                </select>
+                                @error('timezone')
+                                    <span class="error invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="prefix_code" class="form-label fs-14 text-dark">Prefix Code</label>
+                                <input type="text" class="form-control @error('prefix_code') is-invalid @enderror"
+                                    id="prefix_code" placeholder="Enter prefix code" name="prefix_code"
+                                    value="{{ old('prefix_code') }}">
+                                @error('prefix_code')
+                                    <span class="error invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="form-check form-switch mb-2">
                                 <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
                                     checked="" name="is_active">

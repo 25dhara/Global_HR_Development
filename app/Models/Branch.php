@@ -13,7 +13,8 @@ class Branch extends Model
     protected $fillable = [
         'name',
         'is_active',
-        'created_by'
+        'timezone',
+        'prefix_code'
     ];
     public function users()
     {

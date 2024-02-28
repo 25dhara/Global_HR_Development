@@ -14,8 +14,8 @@ class Department extends Model
     protected $fillable = [
         'name',
         'branch_id',
-        'is_active',
-        'created_by'
+        'dept_type',
+        'is_active'
     ];
     public function branch()
     {

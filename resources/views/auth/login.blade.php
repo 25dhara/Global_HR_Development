@@ -6,16 +6,16 @@
 
     <!-- Meta Data -->
     <meta charset="UTF-8">
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> SPRUHA - Bootstrap 5 Premium Admin & Dashboard Template </title>
+    <title> GLOBAL HR </title>
     <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
     <meta name="Author" content="Spruko Technologies Private Limited">
     <meta name="keywords"
         content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('assets/images/brand-logos/logo.') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/images/brand-logos/tka.jpg') }}" type="image/x-icon">
 
     <!-- Authentication-main Js -->
     <script src="{{ asset('assets/js/authentication-main.js') }}"></script>
@@ -29,7 +29,7 @@
     <!-- Icons Css -->
     <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet">
 
-    <script>
+    {{-- <script>
         if (localStorage.spruhalandingdarktheme) {
             document.querySelector("html").setAttribute("data-theme-mode", "dark")
         }
@@ -37,7 +37,7 @@
             document.querySelector("html").setAttribute("dir", "rtl")
             document.querySelector("#style")?.setAttribute("href", "../assets/libs/bootstrap/css/bootstrap.rtl.min.css");
         }
-    </script>
+    </script> --}}
 
 </head>
 
@@ -529,12 +529,20 @@
                 <div class="card mb-0">
                     <div class="row row-sm">
                         <div class="col-lg-6 col-xl-5 d-none d-lg-block text-center bg-primary details">
-                            <div class="mt-5 pt-4 p-5 position-absolute">
-                                {{-- <div class="clearfix"></div> --}}
+                            {{-- <div class="mt-5 pt-4 p-5 position-absolute">
+                                <div class="clearfix"></div>
                                 <img src="{{ 'assets/images/brand-logos/TKA.jpg' }}" class="ht-150 mb-3"
                                     alt="user">
 
                                 <div class="text-white-6 fs-13 mb-5 mt-xl-0">Welcome to Global HR Portal</div>
+                            </div> --}}
+                            <div class="mt-5 pt-4 p-2 position-absolute">
+                                <img src="{{ 'assets/images/brand-logos/TKA.jpg' }}" class="ht-100 mb-3"
+                                    alt="user">
+                                <h5 class="mt-4 ">Welcome to Global HR Portal</h5>
+                                <span class="text-white-6 fs-13 mb-5 mt-xl-0 mt-4">Signin to create, discover and
+                                    connect
+                                    with the global community</span>
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-7 col-xs-12 col-sm-12 login_form ">
@@ -585,10 +593,6 @@
                                                 <button type="submit" class="btn btn-primary">Sign In</button>
                                             </div>
                                         </form>
-                                        {{-- <div class="text-start mt-5 ms-0">
-                                            <div class="mb-1"><a href="forgot.html">Forgot password?</a></div>
-                                            <div>Don't have an account? <a href="signup.html">Register Here</a></div>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

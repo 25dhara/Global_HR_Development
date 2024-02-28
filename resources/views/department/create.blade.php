@@ -33,6 +33,19 @@
                                     </div>
                                 @enderror
                             </div>
+                            <div class="mb-3">
+                                <label for="dept_type" class="form-label fs-14 text-dark">Department Type</label>
+                                <select class="js-example-basic-single1 @error('access') is-invalid @enderror"
+                                    id="dept_type" name="dept_type">
+                                    <option value="Sales">Sales</option>
+                                    <option value="Non-Sales">Non-Sales</option>
+                                </select>
+                                @error('dept_type')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
                             <div class="form-check form-switch mb-2">
                                 <input class="form-check-input" type="checkbox" role="switch" id="switch-primary"
                                     checked="" name="is_active">

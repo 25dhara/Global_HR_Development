@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use DateTimeZone;
 use App\Models\Branch;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\Datatables;
 use App\Http\Requests\StoreBranchRequest;
 use App\Http\Requests\UpdateBranchRequest;
-use Illuminate\Support\Facades\Auth;
 
 class BranchController extends Controller
 {
@@ -36,7 +37,8 @@ class BranchController extends Controller
      */
     public function create()
     {
-        return view('branch.create');
+        $timezones = DateTimeZone::listIdentifiers();
+        return view('branch.create', compact('timezones'));
     }
 
     /**
@@ -47,8 +49,9 @@ class BranchController extends Controller
         $is_active = $request->is_active == "on" ? 1 : 0;
         Branch::create([
             'name' => $request->name,
-            'is_active' => $is_active,
-            'created_by' => Auth::id()
+            'timezone' => $request->timezone,
+            'prefix_code' => $request->prefix_code,
+            'is_active' => $is_active
         ]);
         return redirect()->route('branch.index')->with('success', 'Branch created successfully');
     }
@@ -67,7 +70,8 @@ class BranchController extends Controller
     public function edit(Branch $branch)
     {
         $departments = Department::where('is_active', 1)->get();
-        return view('branch.edit', compact('branch', 'departments'));
+        $timezones = DateTimeZone::listIdentifiers();
+        return view('branch.edit', compact('branch', 'departments', 'timezones'));
     }
 
     /**
@@ -79,7 +83,9 @@ class BranchController extends Controller
 
         $branch->update([
             'name' => $request->name,
-            'is_active' => $is_active
+            'is_active' => $is_active,
+            'timezone' => $request->timezone,
+            'prefix_code' => $request->prefix_code
         ]);
         $departmentIds = $request->input('departments', []);
         $branch->departments()->sync($departmentIds);

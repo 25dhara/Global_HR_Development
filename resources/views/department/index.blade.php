@@ -27,6 +27,7 @@
                                 <thead>
                                     <tr>
                                         <th class="wd-lg-8p"><span>Department</span></th>
+                                        <th class="wd-lg-8p"><span>Department Type</span></th>
                                         <th class="wd-lg-20p"><span>Is Active</span></th>
                                         <th class="wd-lg-20p">Action</th>
                                     </tr>
@@ -43,6 +44,10 @@
                                         columns: [{
                                                 data: 'name',
                                                 name: 'name'
+                                            },
+                                            {
+                                                data: 'dept_type',
+                                                name: 'dept_type'
                                             },
                                             {
                                                 data: 'is_active',

@@ -39,8 +39,7 @@
                         <div class="d-flex align-items-center">
                             <i class="ti ti-user-circle fs-50 align-middle me-2"></i>
                             <div class="header-navheading">
-                                {{-- <h6 class="main-notification-title">{{ Auth::user()->name }}</h6> --}}
-
+                                <h6 class="main-notification-title">{{ Auth::user()->name }}</h6>
                             </div>
                         </div>
                     </li>

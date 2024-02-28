@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('branches', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
+            $table->string('timezone')->default('UTC');
+            $table->string('prefix_code')->nullable();
             $table->boolean('is_active')->default(1);
-            $table->unsignedBigInteger('created_by');
             $table->timestamps();
             $table->softDeletes();
         });

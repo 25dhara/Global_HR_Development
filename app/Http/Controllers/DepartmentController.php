@@ -48,8 +48,8 @@ class DepartmentController extends Controller
         $is_active = $request->is_active == "on" ? 1 : 0;
         Department::create([
             'name' => $request->name,
-            'is_active' => $is_active,
-            'created_by' => Auth::id()
+            'dept_type' => $request->dept_type,
+            'is_active' => $is_active
         ]);
         return redirect()->route('department.index')->with('success', 'Department created successfully');
     }
@@ -79,6 +79,7 @@ class DepartmentController extends Controller
         $is_active = $request->is_active == "on" ? 1 : 0;
         $department->update([
             'name' => $request->name,
+            'dept_type' => $request->dept_type,
             'is_active' => $is_active
         ]);
         return redirect()->route('department.index')->with('success', 'Department updated successfully');

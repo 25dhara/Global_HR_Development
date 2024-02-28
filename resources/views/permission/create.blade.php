@@ -39,7 +39,7 @@
                             <div class="mb-3">
                                 <label for="form-text" class="form-label fs-14 text-dark">Access<span
                                         class="text-danger">*</span></label>
-                                <select class="js-example-basic-single1 @error('access') is-invalid @enderror"aria-label="select example"
+                                <select class="js-example-basic-single1 @error('access') is-invalid @enderror" aria-label="select example"
                                     name="access">
                                     <option value ="">Select Access</option>
                                     <option value ="create">Create</option>

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('branch_id')->nullable();
+            $table->string('dept_type');
             $table->boolean('is_active')->default(1);
-            $table->unsignedBigInteger('created_by');
             $table->timestamps();
             $table->softDeletes();
         });
