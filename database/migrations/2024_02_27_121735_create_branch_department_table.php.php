@@ -24,6 +24,8 @@ return new class extends Migration
             $table->time('shift_time_till')->nullable();
             $table->boolean('is_active')->default(true);
             $table->unsignedBigInteger('action_by')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
