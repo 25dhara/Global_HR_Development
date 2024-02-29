@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('branches', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name')->unique();
-            $table->string('timezone')->default('UTC');
+            $table->string('timezone');
             $table->string('prefix_code')->nullable();
             $table->boolean('is_active')->default(1);
+            $table->text('address')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

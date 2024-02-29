@@ -12,9 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('departments', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('name');
-            $table->integer('branch_id')->nullable();
             $table->string('dept_type');
             $table->boolean('is_active')->default(1);
             $table->timestamps();
