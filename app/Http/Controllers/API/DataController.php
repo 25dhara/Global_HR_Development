@@ -9,7 +9,8 @@ use App\Models\MaritalStatus;
 
 class DataController extends Controller
 {
-    public function gender_data(){
+    public function gender_data()
+    {
         $genders = [
             ['name' => 'Male', 'is_active' => 1],
             ['name' => 'Female', 'is_active' => 1],
@@ -17,17 +18,25 @@ class DataController extends Controller
         ];
 
         foreach ($genders as $gender) {
-            Gender::create($gender);
+            Gender::updateOrCreate(
+                ['name' => $gender['name']],
+                ['is_active'=> $gender['is_active']]
+            );
         }
     }
-    public function marital_status_data(){
-        $genders = [
+    public function marital_status_data()
+    {
+        $marital_status = [
             ['name' => 'Single', 'is_active' => 1],
             ['name' => 'Married', 'is_active' => 1],
         ];
 
-        foreach ($genders as $gender) {
-            MaritalStatus::create($gender);
+        foreach ($marital_status as $marital) {
+
+            MaritalStatus::updateOrCreate(
+                ['name' => $marital['name']],
+                ['is_active'=> $marital['is_active']]
+            );
         }
     }
 }
