@@ -32,7 +32,6 @@ class DataController extends Controller
         ];
 
         foreach ($marital_status as $marital) {
-
             MaritalStatus::updateOrCreate(
                 ['name' => $marital['name']],
                 ['is_active'=> $marital['is_active']]

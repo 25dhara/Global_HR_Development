@@ -9,6 +9,7 @@ use App\Http\Controllers\BranchController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('role',            RoleController::class);
     Route::resource('module',          ModuleController::class);
     Route::resource('permission',      PermissionController::class);
+    Route::resource('employee',        EmployeeController::class);
 
     Route::get('/departments/{branch}',         [UserController::class, 'getDepartments'])->name('departments.get');
 
