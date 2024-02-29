@@ -84,6 +84,24 @@
                         <span class="side-menu__label">Module</span>
                     </a>
                 </li>
+                <li class="slide has-sub  {{ request()->is('employee*') ? 'active open' : '' }} ">
+                    <a href="javascript:void(0);" class="side-menu__item  ">
+                        <span class="shape1"></span>
+                        <span class="shape2"></span>
+                        <i class="ti-user side-menu__icon"></i>
+                        <span class="side-menu__label">Employee Detail</span>
+                        <i class="fe fe-chevron-right side-menu__angle"></i>
+                    </a>
+                    <ul class="slide-menu child1 {{ request()->is('employee*') ? 'active' : '' }}">
+                        <li class="slide side-menu__label1 active">
+                            <a href="javascript:void(0)">Employee Detail</a>
+                        </li>
+                        <li class="slide">
+                            <a href="{{ route('user.index') }}"
+                                class="side-menu__item {{ request()->is('employee*') ? 'active' : '' }}">List</a>
+                        </li>
+                    </ul>
+                </li>
                 <!-- End::slide -->
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
